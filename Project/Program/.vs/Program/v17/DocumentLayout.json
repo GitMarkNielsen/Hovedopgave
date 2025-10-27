@@ -1,10 +1,38 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Projects\\Hovedopgave\\Hovedopgave\\Project\\Program\\",
+  "WorkspaceRootPath": "C:\\Projects\\Hovedopgave\\Project\\Program\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|c:\\projects\\hovedopgave\\hovedopgave\\project\\program\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|c:\\projects\\hovedopgave\\project\\program\\2.datahandling\\sortingbysize.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|solutionrelative:2.datahandling\\sortingbysize.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|c:\\projects\\hovedopgave\\project\\program\\1.loadingfiles\\parsestringstovalues.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|solutionrelative:1.loadingfiles\\parsestringstovalues.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|c:\\projects\\hovedopgave\\project\\program\\4.common\\columns.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|solutionrelative:4.common\\columns.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|c:\\projects\\hovedopgave\\project\\program\\4.common\\inhousedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|solutionrelative:4.common\\inhousedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|c:\\projects\\hovedopgave\\project\\program\\4.common\\canonicalmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|solutionrelative:4.common\\canonicalmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|c:\\projects\\hovedopgave\\project\\program\\4.common\\rows.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|solutionrelative:4.common\\rows.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|c:\\projects\\hovedopgave\\project\\program\\4.common\\csv_dbo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|solutionrelative:4.common\\csv_dbo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|c:\\projects\\hovedopgave\\project\\program\\1.loadingfiles\\loadallfiles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|solutionrelative:1.loadingfiles\\loadallfiles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,20 +42,124 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Projects\\Hovedopgave\\Hovedopgave\\Project\\Program\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Projects\\Hovedopgave\\Hovedopgave\\Project\\Program\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 7,
+              "Title": "LoadAllFiles.cs",
+              "DocumentMoniker": "C:\\Projects\\Hovedopgave\\Project\\Program\\1.LoadingFiles\\LoadAllFiles.cs",
+              "RelativeDocumentMoniker": "1.LoadingFiles\\LoadAllFiles.cs",
+              "ToolTip": "C:\\Projects\\Hovedopgave\\Project\\Program\\1.LoadingFiles\\LoadAllFiles.cs",
+              "RelativeToolTip": "1.LoadingFiles\\LoadAllFiles.cs",
+              "ViewState": "AQIAABQAAAAAAAAAAAAgwBgAAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-23T16:28:56.216Z",
+              "WhenOpened": "2025-10-27T11:54:28.315Z",
+              "IsPinned": true,
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ParseStringsToValues.cs",
+              "DocumentMoniker": "C:\\Projects\\Hovedopgave\\Project\\Program\\1.LoadingFiles\\ParseStringsToValues.cs",
+              "RelativeDocumentMoniker": "1.LoadingFiles\\ParseStringsToValues.cs",
+              "ToolTip": "C:\\Projects\\Hovedopgave\\Project\\Program\\1.LoadingFiles\\ParseStringsToValues.cs",
+              "RelativeToolTip": "1.LoadingFiles\\ParseStringsToValues.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAQwBMAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T12:29:58.661Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CSV_DBO.cs",
+              "DocumentMoniker": "C:\\Projects\\Hovedopgave\\Project\\Program\\4.Common\\CSV_DBO.cs",
+              "RelativeDocumentMoniker": "4.Common\\CSV_DBO.cs",
+              "ToolTip": "C:\\Projects\\Hovedopgave\\Project\\Program\\4.Common\\CSV_DBO.cs",
+              "RelativeToolTip": "4.Common\\CSV_DBO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAUAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T11:53:57.306Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Rows.cs",
+              "DocumentMoniker": "C:\\Projects\\Hovedopgave\\Project\\Program\\4.Common\\Rows.cs",
+              "RelativeDocumentMoniker": "4.Common\\Rows.cs",
+              "ToolTip": "C:\\Projects\\Hovedopgave\\Project\\Program\\4.Common\\Rows.cs",
+              "RelativeToolTip": "4.Common\\Rows.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAIAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T11:59:25.194Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Columns.cs",
+              "DocumentMoniker": "C:\\Projects\\Hovedopgave\\Project\\Program\\4.Common\\Columns.cs",
+              "RelativeDocumentMoniker": "4.Common\\Columns.cs",
+              "ToolTip": "C:\\Projects\\Hovedopgave\\Project\\Program\\4.Common\\Columns.cs",
+              "RelativeToolTip": "4.Common\\Columns.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T11:59:39.615Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "sortingBySize.cs",
+              "DocumentMoniker": "C:\\Projects\\Hovedopgave\\Project\\Program\\2.DataHandling\\sortingBySize.cs",
+              "RelativeDocumentMoniker": "2.DataHandling\\sortingBySize.cs",
+              "ToolTip": "C:\\Projects\\Hovedopgave\\Project\\Program\\2.DataHandling\\sortingBySize.cs",
+              "RelativeToolTip": "2.DataHandling\\sortingBySize.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T12:59:57.49Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "InhouseData.cs",
+              "DocumentMoniker": "C:\\Projects\\Hovedopgave\\Project\\Program\\4.Common\\InhouseData.cs",
+              "RelativeDocumentMoniker": "4.Common\\InhouseData.cs",
+              "ToolTip": "C:\\Projects\\Hovedopgave\\Project\\Program\\4.Common\\InhouseData.cs",
+              "RelativeToolTip": "4.Common\\InhouseData.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T12:50:10.901Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CanonicalModel.cs",
+              "DocumentMoniker": "C:\\Projects\\Hovedopgave\\Project\\Program\\4.Common\\CanonicalModel.cs",
+              "RelativeDocumentMoniker": "4.Common\\CanonicalModel.cs",
+              "ToolTip": "C:\\Projects\\Hovedopgave\\Project\\Program\\4.Common\\CanonicalModel.cs",
+              "RelativeToolTip": "4.Common\\CanonicalModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAACHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T12:37:09.118Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
             }
           ]
         }
