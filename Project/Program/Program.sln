@@ -1,9 +1,33 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36616.10 d17.14
+VisualStudioVersion = 17.14.36616.10
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Program", "Program.csproj", "{85B74196-4B65-440E-9E40-65F8C6F074A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Program", "Program.csproj", "{85B74196-4B65-440E-9E40-65F8C6F074A2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.Loading files", "1.Loading files", "{F9C149E1-544D-481B-ABC8-91B539D21441}"
+	ProjectSection(SolutionItems) = preProject
+		LoadAllFiles.cs = LoadAllFiles.cs
+		MapCSVToCs.cs = MapCSVToCs.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.Data handling", "2.Data handling", "{9332C520-38AD-4A47-A8E0-0809AFE227E0}"
+	ProjectSection(SolutionItems) = preProject
+		ReciveData.cs = ReciveData.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.Writing output", "3.Writing output", "{67D2A6AE-0F8E-42F4-AA2A-AAC587E1368F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0.Input Files", "0.Input Files", "{2B4EA801-AA02-4D07-AD35-17FE56C519A3}"
+	ProjectSection(SolutionItems) = preProject
+		TextFile1.txt = TextFile1.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.Common", "4.Common", "{EA50458B-D569-42EF-B7E9-C491E34271C3}"
+	ProjectSection(SolutionItems) = preProject
+		AllRows.cs = AllRows.cs
+		RowData.cs = RowData.cs
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
