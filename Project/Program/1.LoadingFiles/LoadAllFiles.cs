@@ -4,28 +4,29 @@ using System.Collections;
 using System.Text.RegularExpressions;
 public class LoadAllFiiles
 {
-    public string FolderToSearch { get; set; } = "../../../0.InputFiles";
+
     public string[] AllFilePaths { get; set; }
-
-
-    public LoadAllFiiles()
+    private List<CSV_DBO> AllDataFilesLoaded { get; set; } = new List<CSV_DBO>();
+    public List<CSV_DBO> LoadCSVFiles(string FolderToSearch)
     {
         AllFilePaths = Directory.GetFiles(FolderToSearch);
         foreach (string file in AllFilePaths)
         {
-            char delimeter = ';';
+            Console.WriteLine("Reading from file: " + file);
             using (var reader = new StreamReader(file))
             {
                 //if the file has no data
                 if (reader.EndOfStream)
                 {
-                    return;
+                    Console.WriteLine("File has no data");
+                    return AllDataFilesLoaded;
                 }
 
                 CSV_DBO CSVData = new();
                 //Header from CSV
                 string line = reader.ReadLine();
-                delimeter = FindSeperationChar(line);
+
+                char delimeter = FindSeperationChar(line);
                 foreach (string item in line.Split(delimeter))
                 {
                     CSVData.HeaderValues.Add(item);
@@ -43,13 +44,14 @@ public class LoadAllFiiles
                     CSVData.AllRows.Add(newRow);
                 }
                 //from here, the CSVData variable should contain all the data from the CSV.
-                Console.Write(CSVData.ToString());
+                AllDataFilesLoaded.Add(CSVData);
             }
             //send each file down the pipeline
-        
-        }
-    }
+            return AllDataFilesLoaded;
 
+        }
+        return AllDataFilesLoaded;
+    }
     private char FindSeperationChar(string RowOfCSV)
     {
         //have the most likely at first, as a fix for if every field has a decimal
@@ -58,13 +60,13 @@ public class LoadAllFiiles
         char[] possibleSeperators = [
             ';',
             ':',
-            ',',
-            '.',
             '|',
             '\\',
-            '/'];
+            '/' ,
+            ',',
+            '.'];
         int highest = 0;
-        char seperatorCharInTheCSV = ';';
+        char seperatorCharInTheCSV = '.';
         foreach (char c in possibleSeperators)
         {
             string Pattern = $@"(\{c})";

@@ -1,4 +1,4 @@
-Date;SoldQuantity;CostPrice;Turnover;
+EAN;SoldQuantity;VAT;Turnover
 20251031;1;25;100
 20251031;1;25;120
 20251031;1;25;130

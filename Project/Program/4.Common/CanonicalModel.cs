@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Common
 {
+    /// <summary>
+    /// Each instance of CanonicalModel is a single row of a CSV in the correct datatype.
+    /// </summary>
     public class CanonicalModel
     {
         //have all the values that i will need in here in the correct type
@@ -17,6 +20,10 @@ namespace Common
         public decimal VAT { get; set; }
         public string Unknown { get; set; } //to catch any values that for some reason doesn't have a header name that's not registered
 
+        public override string ToString()
+        {
+            return $"EAN: {EAN}, Size: {Size}, Turnover: {Turnover}, GrossProfit: {GrossProfit}, VAT: {VAT}, unkowns: {Unknown}";
+        }
 
     }
 }

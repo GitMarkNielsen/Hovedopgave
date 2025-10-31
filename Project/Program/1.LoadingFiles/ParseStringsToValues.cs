@@ -8,9 +8,14 @@ using System.Threading.Tasks;
 
 namespace LoadingFiles
 {
-    public class ParseStringsToValues
+    public class ParseStringsToValues : IDisposable
     {
-        public void ParseValues(CSV_DBO data)
+        public void Dispose()
+        {
+            
+        }
+
+        public InhouseData ParseValues(CSV_DBO data)
         {
             //CanonicalModel is the data from a CSV file in the correct data types
             CanonicalModel CM = new();
@@ -46,11 +51,12 @@ namespace LoadingFiles
                 }
                 inhouseData.Row.Add(CM);
             }
-
-            //send inhouseData to next step in pipeline
+            return inhouseData;
 
 
         }
+
+       
 
     }
 
