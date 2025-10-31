@@ -2,6 +2,6 @@
 
 public class Rows
 {
-    public List<string> Columns { get; set; }
+    public List<string> Columns { get; set; } = new List<string>();
 
 }

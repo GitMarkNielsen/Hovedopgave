@@ -4,7 +4,7 @@ using System.Collections;
 using System.Text.RegularExpressions;
 public class LoadAllFiiles
 {
-    public string FolderToSearch { get; set; } = "../0.FilesToSearch";
+    public string FolderToSearch { get; set; } = "../../../0.InputFiles";
     public string[] AllFilePaths { get; set; }
 
 
@@ -24,8 +24,7 @@ public class LoadAllFiiles
 
                 CSV_DBO CSVData = new();
                 //Header from CSV
-                string line = "";
-                line = reader.ReadLine();
+                string line = reader.ReadLine();
                 delimeter = FindSeperationChar(line);
                 foreach (string item in line.Split(delimeter))
                 {
@@ -44,8 +43,10 @@ public class LoadAllFiiles
                     CSVData.AllRows.Add(newRow);
                 }
                 //from here, the CSVData variable should contain all the data from the CSV.
+                Console.Write(CSVData.ToString());
             }
             //send each file down the pipeline
+        
         }
     }
 
