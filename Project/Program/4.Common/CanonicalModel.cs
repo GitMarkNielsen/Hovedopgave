@@ -17,6 +17,7 @@ namespace Common
         public decimal Turnover { get; set; }
         public decimal GrossProfit { get; set; }
         public decimal CostPrice { get; set; }
+        public int QuantitySold { get; set; }
         public decimal VAT { get; set; }
         public string Unknown { get; set; } //to catch any values that for some reason doesn't have a header name that's not registered
 

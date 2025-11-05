@@ -1,5 +1,7 @@
 ﻿using Common;
+using DataHandling;
 using LoadingFiles;
+
 
 public class Program
 {
@@ -8,7 +10,7 @@ public class Program
     public static void Main(string[] args)
     {
         Console.WriteLine($"Searching folder: {FolderToSearch}");
-        LoadAllFiiles loadAllFiiles = new LoadAllFiiles();
+        LoadAllFiiles loadAllFiiles = new();
         List<CSV_DBO> AllFiles = loadAllFiiles.LoadCSVFiles(FolderToSearch);
 
         List<InhouseData> parsedData = new();
@@ -30,6 +32,10 @@ public class Program
             }
             #endregion
         }
+        //testing
+        CombineItems foobar = new();
+        foobar.Combine(parsedData[0]);
+
         /*
          * from here on out, i have all the data from a CSV loaded into memory. I should now combine as much data as possible.
          * I'll do this by reading each EAN or other identifier, checking a running list of what EANS we've seen so far

@@ -18,10 +18,10 @@ namespace LoadingFiles
         public InhouseData ParseValues(CSV_DBO data)
         {
             //CanonicalModel is the data from a CSV file in the correct data types
-            CanonicalModel CM = new();
-            InhouseData inhouseData = new();
+            InhouseData ParsedCSV = new();
             for (int i = 0; i < data.AllRows.Count; i++)
             {
+            CanonicalModel CM = new();
                 for (int j = 0; j < data.HeaderValues.Count; j++)
                 {
                     switch (data.HeaderValues[j].ToUpper())
@@ -44,14 +44,20 @@ namespace LoadingFiles
                         case "VAT":
                             CM.VAT = Decimal.Parse(data.AllRows[i].Columns[j]);
                             break;
+                        case "SOLDQUANTITY":
+                            CM.QuantitySold = int.Parse(data.AllRows[i].Columns[j]);
+                            break;
+                        case "QUANTITYSOLD":
+                            CM.QuantitySold = int.Parse(data.AllRows[i].Columns[j]);
+                            break;
                         default:
                             CM.Unknown = data.AllRows[i].Columns[j];
                             break;
                     }
                 }
-                inhouseData.Row.Add(CM);
+                ParsedCSV.Row.Add(CM);
             }
-            return inhouseData;
+            return ParsedCSV;
 
 
         }
