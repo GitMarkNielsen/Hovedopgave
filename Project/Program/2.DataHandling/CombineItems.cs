@@ -10,7 +10,12 @@ namespace DataHandling
     internal class CombineItems
     {
         public Dictionary<int,CanonicalModel> UniqueProducts { get; set; } = new Dictionary<int, CanonicalModel>();
-        public void Combine(InhouseData FullParsedCSV)
+        /// <summary>
+        /// Compressed a full parsed CSV file into a smaller chunk, so when i sort, it doesn't have to sort x amount of the same size
+        /// </summary>
+        /// <param name="FullParsedCSV"></param>
+        /// <returns>new InhouseData type, that contains the compressed version of the input InhouseData</returns>
+        public InhouseData Combine(InhouseData FullParsedCSV)
         {
             foreach (CanonicalModel CM in FullParsedCSV.Row)
             {
@@ -26,16 +31,17 @@ namespace DataHandling
                     UniqueProducts.Add(CM.EAN, CM);
                 }
             }
-            //optimization. Map original CM to new one
-
+            
             InhouseData combinedData = new();
-            CanonicalModel combinedCM = new();
+            //TODO: Add each field that needs to be multiplied in the foreach.
             foreach (var item in UniqueProducts) 
             {
-                combinedCM.EAN = item.Key;
-                //combinedCM.QuantitySold = item.Value;
+                CanonicalModel combinedCM = item.Value;
+                combinedCM.GrossProfit = item.Value.GrossProfit * item.Value.QuantitySold;
+                combinedCM.Turnover = item.Value.Turnover * item.Value.QuantitySold;
+                combinedData.Row.Add(combinedCM);
             }
-
+            return combinedData;
          
         }
 
