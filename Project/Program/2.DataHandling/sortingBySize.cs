@@ -138,7 +138,10 @@ namespace DataHandling
                     }
 
                     else                                                            //S,M or L
-                        sortList.Add(new SortDBO(item.ToUpper(), IndexValue * 10000));
+                    {
+                        CM.SortingIndex = IndexValue * 10000;
+                        sortList.Add(CM);
+                    }
                     /* <1>
                      * This segment is meant to prioritize numbers before raw X's. so 3X is shown before xxx regardless of it's Large or Small.
                      * So if it's Large, we "value + (-1 * 1)" = -1 to the value, so it's seen as "smaller" than XXX
@@ -166,43 +169,44 @@ namespace DataHandling
                      */
 
 
-                    //getting the match to work with
+                    //getting the match to work with. Group 0 is the entire string.
                     var comparison = Regex.Match(regMatch.Groups[0].Value, RegexDBO.TshirtSizePlusRangeCheck);
 
-                    //setup for the 1st value
+                    //setup for the 1st value                   Group 0 here is the amount of extra in the first value
                     var amountOfExtraFirst = Regex.Match(comparison.Groups[0].Value, RegexDBO.TshirtSizeAmountOfExtra);
                     var LMorSFirst = comparison.Groups[2].Value;
                     var LMorSValueFirst = LMorSFirst.ToUpper().ToCharArray()[0];
                     int firstIndexValue = 1;
                     int SorLFirst = -1;
 
-                    //setup for the 2nd value
+                    //setup for the 2nd value                   Group 3 here is the amount of extra in the second value
                     var amountOfExtraSecond = Regex.Match(comparison.Groups[3].Value, RegexDBO.TshirtSizeAmountOfExtra);
                     var LMorSSecond = comparison.Groups[4].Value;
                     var LMorSValueSecond = LMorSSecond.ToUpper().ToCharArray()[0];
                     int secondIndexValue = 1;
                     int SorLSecond = -1;
-                    //Finding the letters of both values
+
+                    //Translating the LetterValues to a Number value
+                    #region FindingLetterValues
+                    if (LMorSValueFirst == 'L')
                     {
-                        if (LMorSValueSecond == 'L')
-                        {
-                            secondIndexValue = 3;
-                            SorLSecond = 1;
-                        }
-                        else if (LMorSValueSecond == 'M')
-                            secondIndexValue = 2;
-
-                        if (LMorSValueFirst == 'L')
-                        {
-                            firstIndexValue = 3;
-                            SorLFirst = 1;
-                        }
-                        else if (LMorSValueFirst == 'M')
-                            firstIndexValue = 2;
+                        firstIndexValue = 3;
+                        SorLFirst = 1;
                     }
+                    else if (LMorSValueFirst == 'M')
+                        firstIndexValue = 2;
+
+                    if (LMorSValueSecond == 'L')
+                    {
+                        secondIndexValue = 3;
+                        SorLSecond = 1;
+                    }
+                    else if (LMorSValueSecond == 'M')
+                        secondIndexValue = 2;
+                    #endregion
 
 
-                    //if sortByFirst, calculate the 2nd values first
+                    //if sortByFirst, calculate the 2nd values first to add to the first one
                     if (sortByFirstCheck)
                     {
                         double secondValue = secondIndexValue;
@@ -220,17 +224,24 @@ namespace DataHandling
                         //this bit is more or less the same as the pure Tshirt one, so im not going to explain it again here.
                         //main difference is we just add the second Value on the end as it is. No big numbers going on there
                         if (!string.IsNullOrEmpty(amountOfExtraFirst.Groups[1].Value)) //nX
-                            sortList.Add(new SortDBO(item.ToUpper(), firstIndexValue * 10000
-                                + ((double.Parse(amountOfExtraFirst.Groups[1].Value) + (-1 * SorLFirst)) * 1000) * SorLFirst + secondValue));
+                        {
+                            CM.SortingIndex = firstIndexValue * 10000 + ((double.Parse(amountOfExtraFirst.Groups[1].Value) + (-1 * SorLFirst)) * 1000) * SorLFirst + secondValue;
+                            sortList.Add(CM);
+                        }
                         else if (!string.IsNullOrEmpty(amountOfExtraFirst.Groups[2].Value)) //X
-                            sortList.Add(new SortDBO(item.ToUpper(), firstIndexValue * 10000
-                                + ((amountOfExtraFirst.Groups[2].Value.Length * SorLFirst) * 1000) + secondValue));
+                        {
+                            CM.SortingIndex = firstIndexValue * 10000 + ((amountOfExtraFirst.Groups[2].Value.Length * SorLFirst) * 1000) + secondValue;
+                            sortList.Add(CM);
+                        }
                         else //S,M or L
-                            sortList.Add(new SortDBO(item.ToUpper(), firstIndexValue * 10000 + secondValue));
+                        {
+                            CM.SortingIndex = firstIndexValue * 10000 + secondValue;
+                            sortList.Add(CM);
+                        }
                     }
                     else
                     {
-                        //else, calculate 1st value first
+                        //else, calculate 1st value first and add to second value
                         double firstValue = firstIndexValue;
                         if (!string.IsNullOrEmpty(amountOfExtraFirst.Groups[1].Value)) //nX
                         {
@@ -245,13 +256,20 @@ namespace DataHandling
                         //then add 1st values to sortByLast
 
                         if (!string.IsNullOrEmpty(amountOfExtraSecond.Groups[1].Value)) //nX
-                            sortList.Add(new SortDBO(item.ToUpper(), secondIndexValue * 10000
-                                + (double.Parse(amountOfExtraSecond.Groups[1].Value) + (-1 * SorLSecond) * 1000) * SorLSecond + firstValue));
+                        {
+                            CM.SortingIndex = secondIndexValue * 10000 + (double.Parse(amountOfExtraSecond.Groups[1].Value) + (-1 * SorLSecond) * 1000) * SorLSecond + firstValue;
+                            sortList.Add(CM);
+                        }
                         else if (!string.IsNullOrEmpty(amountOfExtraSecond.Groups[2].Value)) //X
-                            sortList.Add(new SortDBO(item.ToUpper(), secondIndexValue * 10000
-                                + ((amountOfExtraSecond.Groups[2].Value.Length * SorLSecond) * 1000) + firstValue));
+                        {
+                            CM.SortingIndex = secondIndexValue * 10000 + ((amountOfExtraSecond.Groups[2].Value.Length * SorLSecond) * 1000) + firstValue;
+                            sortList.Add(CM);
+                        }
                         else //S,M or L
-                            sortList.Add(new SortDBO(item.ToUpper(), secondIndexValue * 10000 + firstValue));
+                        {
+                            CM.SortingIndex = secondIndexValue * 10000 + firstValue;
+                            sortList.Add(CM);
+                        }
                     }
                 }
                 else if (Regex.IsMatch(regMatch.Groups[0].Value, RegexDBO.TShirtToNumberCheck))
@@ -301,8 +319,8 @@ namespace DataHandling
                         tShirtSizeValue = (IndexValue * sortByFirst) + (amountOfExtra.Groups[2].Value.Length * sortByFirst / 10) * SorL;
                     }
 
-
-                    sortList.Add(new SortDBO(item, tShirtSizeValue + numberValue * sortBySecond));
+                    CM.SortingIndex = tShirtSizeValue + numberValue * sortBySecond;
+                    sortList.Add(CM);
                 }
                 else if (isABraSizeFix)
                 //BraSizes
@@ -330,8 +348,8 @@ namespace DataHandling
                     }
                     if (isABraSize)
                     { //                                   ↓<1>                                             ↓<2>
-                        var Index = ((int)braLetter[0] + HigherSize) * sortByFirst + int.Parse(braRegex.Groups[2].Value) * sortBySecond;
-                        sortList.Add(new SortDBO(item, Index));
+                        CM.SortingIndex = ((int)braLetter[0] + HigherSize) * sortByFirst + int.Parse(braRegex.Groups[2].Value) * sortBySecond;
+                        sortList.Add(CM);
                     }
                     /*
                      * <1>
@@ -351,14 +369,16 @@ namespace DataHandling
                     //if there's a string, but no number, then we just add it to the end of the sorting. Works with Onesize, and also with anything not acounted for ¯\_(ツ)_/¯
                     if (!string.IsNullOrEmpty(regMatch.Groups[1].Value) && string.IsNullOrEmpty(regMatch.Groups[3].Value))
                     {
-                        sortList.Add(new SortDBO(item, 10000000)); //onesize or other stray word without numbers, we'll place at the end.
+                        CM.SortingIndex = 10000000;
+                        sortList.Add(CM); //onesize or other stray word without numbers, we'll place at the end.
                     }
                     //---------------------------------------------------
                     // 1 number
                     if (!string.IsNullOrEmpty(regMatch.Groups[3].Value) //first number
                         && string.IsNullOrEmpty(regMatch.Groups[7].Value)) //if 7 is unset, then there's only 1 number in the searchstring
                     {
-                        sortList.Add(new SortDBO(item.ToUpper(), double.Parse(regMatch.Groups[3].Value) * sortByFirst)); //we still add the 1k so it'll play well if there's mixed values
+                        CM.SortingIndex = double.Parse(regMatch.Groups[3].Value) * sortByFirst;
+                        sortList.Add(CM); //we still add the 1k so it'll play well if there's mixed values
                     }
                     //---------------------------------------------------
                     // 2 numbers
@@ -377,10 +397,14 @@ namespace DataHandling
                             }
                         }
                         if (Regex.IsMatch(regMatch.Groups[9].Value, @"\,|\.")) //if it's a decimal
-                            sortList.Add(new SortDBO(item.ToUpper(), double.Parse(regMatch.Groups[3].Value + "." + regMatch.Groups[10].Value) * sortByFirst));
+                        {
+                            CM.SortingIndex = double.Parse(regMatch.Groups[3].Value + "." + regMatch.Groups[10].Value) * sortByFirst;
+                            sortList.Add(CM);
+                        }
                         else if (Regex.IsMatch(regMatch.Groups[9].Value, @"\\|\/|\-|\s*?")) //two ints. example: 27 / 12 or 13 - 21
                         {
-                            sortList.Add(new SortDBO(item.ToUpper(), firstNumber * sortByFirst + secondNumber * sortBySecond));
+                            CM.SortingIndex = firstNumber * sortByFirst + secondNumber * sortBySecond;
+                            sortList.Add(CM);
                         }
                         else
                             throw new Exception("Error with 2 numbers: couldn't find endpoint");
