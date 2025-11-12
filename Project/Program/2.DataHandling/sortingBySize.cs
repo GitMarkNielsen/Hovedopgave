@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,18 +10,6 @@ namespace DataHandling
 {
     public class sortingBySize
     {
-        public class SortDBO
-        {
-            public double? Index { get; set; }
-            public string? Content { get; set; }
-
-            public SortDBO(string? content, double? Index)
-            {
-                this.Index = Index;
-                Content = content;
-            }
-        }
-
         private static class RegexDBO
         {
 
@@ -57,24 +46,25 @@ namespace DataHandling
             public static string TshirtSizePlusRangeCheck { get; } = @"^([\dxX]*)([mMsSlL]{1})\D+?([\dxX]*)([mMsSlL]){1}(\d)*";
             public static string Words { get; } = @"[A-z]+";
         }
-
-        public static List<SortDBO> MarksSmartSortFromGF(List<string> listOfSizes, bool sortByFirstCheck = true)
+        /// <summary>
+        /// Sorts multiple types of clothing articles from 1 method
+        /// </summary>
+        /// <param name="listOfSizes"></param>
+        /// <param name="sortByFirstCheck"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public static List<CanonicalModel> SmartSorter(List<CanonicalModel> listOfSizes, bool sortByFirstCheck = true)
         {
             //We do some setup that's common for each item
-            var sortList = new List<SortDBO>();
-            int sortByFirst = 10000;
-            int sortBySecond = 1;
-            if (!sortByFirstCheck)
-            {
-                sortByFirst = 1;
-                sortBySecond = 10000;
-            }
-
-
+            var sortList = new List<CanonicalModel>();
+            int sortByFirst = sortByFirstCheck ? 10000 : 1;
+            int sortBySecond = sortByFirstCheck ? 1 : 10000;
 
             bool isABraSizeFix = false;
-            foreach (var item in listOfSizes)
+
+            foreach (CanonicalModel CM in listOfSizes)
             {
+                string item = CM.Size;
                 var regMatch = Regex.Match(item, RegexDBO.UniversalRegex);
                 //Since EU 45 would trigger brasize, we run this for each element. (collapsible with the region to clean it up a bit)
                 #region BraSizeFix
@@ -89,9 +79,9 @@ namespace DataHandling
                         //start foreach loop on 2nd value (Index 1)
                         for (int i = 1; i < braLetterCheck.Count(); i++)
                         {
+                            //if the letters aren't the same, then it's not a braSize
                             if (braLetterCheck[i] != firstChar)
                             {
-                                //if the letters aren't the same, then it's not a braSize
                                 isABraSizeFix = false;
                                 break;
                             }
@@ -99,8 +89,6 @@ namespace DataHandling
                     }
                 }
                 #endregion
-
-
 
                 //"Algorith" starts here ↓
                 if (Regex.IsMatch(regMatch.Groups[0].Value, RegexDBO.TShirtSizeCheck))//tShirtSize
@@ -136,11 +124,19 @@ namespace DataHandling
                         IndexValue = 2;
 
                     //The "*10000" could've been "sortByFirst", but it can be set to 1, so the valley would disapear and ruin the sorting. 
-                    if (!string.IsNullOrEmpty(amountOfExtra.Groups[1].Value))       //nX       ↓<3>                                   ↓<4>         ↓<1>     ↓<2>
-                        sortList.Add(new SortDBO(item.ToUpper(), IndexValue * 10000 + (double.Parse(amountOfExtra.Groups[1].Value) * 1000 + (-1 * SorL)) * SorL));
+                    if (!string.IsNullOrEmpty(amountOfExtra.Groups[1].Value))
+                    {
+                        //nX                                            ↓<3>                                   ↓<4>         ↓<1>     ↓<2>
+                        CM.SortingIndex = IndexValue * 10000 + (double.Parse(amountOfExtra.Groups[1].Value) * 1000 + (-1 * SorL)) * SorL;
+                        sortList.Add(CM);
+                    }
                     //                                              ↑ S M or L                        
                     else if (!string.IsNullOrEmpty(amountOfExtra.Groups[2].Value))  //X
-                        sortList.Add(new SortDBO(item.ToUpper(), IndexValue * 10000 + amountOfExtra.Groups[2].Value.Length * 1000 * SorL));
+                    {
+                        CM.SortingIndex = IndexValue * 10000 + amountOfExtra.Groups[2].Value.Length * 1000 * SorL;
+                        sortList.Add(CM);
+                    }
+
                     else                                                            //S,M or L
                         sortList.Add(new SortDBO(item.ToUpper(), IndexValue * 10000));
                     /* <1>
@@ -155,7 +151,7 @@ namespace DataHandling
                      * from "largest" first in the case of "S"
                      * to "largest" last, in the case of "L"
                      * <3>
-                     * Parse the value to an int, as it's 5 in "5xl"
+                     * Parse the value to a double, as it's 5 in "5xl"
                      * <4>
                      * add 1.000 to the value, so the +-1 difference in 3xl and xxxl made in <1> 
                      * doesn't change it's position relative to the other values. So 3xl is still considered larger than xxl, even though we -1 from it's value
@@ -398,18 +394,27 @@ namespace DataHandling
                         && string.IsNullOrEmpty(regMatch.Groups[5].Value)) //checks if 4th number is set
                     {
                         if (Regex.IsMatch(regMatch.Groups[6].Value, @"\.|\,|\/")) //if the 1nd special character is a decimal, then combine the 1nd and 2rd number as the 1st value
-                            sortList.Add(new SortDBO(item.ToUpper(), double.Parse(regMatch.Groups[3].Value + "." + regMatch.Groups[8].Value) * sortByFirst
-                                                         + double.Parse(regMatch.Groups[10].Value) * sortBySecond));
+                        {
+                            CM.SortingIndex = double.Parse(regMatch.Groups[3].Value + "." + regMatch.Groups[8].Value) * sortByFirst + double.Parse(regMatch.Groups[10].Value) * sortBySecond;
+                            sortList.Add(CM);
+
+                        }
                         else if (Regex.IsMatch(regMatch.Groups[9].Value, @"[\.\,|\/]")) //if the 1st special char isn't a decimal point, then if 2nd one is
-                            sortList.Add(new SortDBO(item.ToUpper(), double.Parse(regMatch.Groups[3].Value) * sortByFirst
-                                                         + double.Parse(regMatch.Groups[8].Value + "." + regMatch.Groups[10].Value) * sortBySecond));
+                        {
+                            CM.SortingIndex = double.Parse(regMatch.Groups[3].Value) * sortByFirst + double.Parse(regMatch.Groups[8].Value + "." + regMatch.Groups[10].Value) * sortBySecond;
+                            sortList.Add(CM);
+
+                        }
                         else if (Regex.IsMatch(regMatch.Groups[6].Value, @"\\|\/")) //if 1st special char is seperate value
-                            sortList.Add(new SortDBO(item.ToUpper(), double.Parse(regMatch.Groups[3].Value) * sortByFirst
-                                                         + double.Parse(regMatch.Groups[8].Value) * sortBySecond));
+                        {
+                            CM.SortingIndex = double.Parse(regMatch.Groups[3].Value) * sortByFirst + double.Parse(regMatch.Groups[8].Value) * sortBySecond;
+                            sortList.Add(CM);
+
+                        }
                         else if (Regex.IsMatch(regMatch.Groups[6].Value, @"\-"))
                         {
-                            sortList.Add(new SortDBO(item.ToUpper(), double.Parse(regMatch.Groups[3].Value) * sortByFirst
-                                                         + double.Parse(regMatch.Groups[10].Value) * sortBySecond));
+                            CM.SortingIndex = double.Parse(regMatch.Groups[3].Value) * sortByFirst + double.Parse(regMatch.Groups[10].Value) * sortBySecond;
+                            sortList.Add(CM);
                         }
                         else
                             throw new Exception("Error with 3 numbers: couldn't find endpoint");
@@ -419,12 +424,18 @@ namespace DataHandling
                     // 4 numbers
                     else if (!string.IsNullOrEmpty(regMatch.Groups[5].Value)) //if group 5 is set, then there's 4 numbers
                     {
+                        //If it's 2 decimals, then we parse them as such
                         if (Regex.IsMatch(regMatch.Groups[4].Value, @"\,|\.") && Regex.IsMatch(regMatch.Groups[9].Value, @"\,|\."))
-                            sortList.Add(new SortDBO(item.ToUpper(), double.Parse(regMatch.Groups[3].Value + "." + regMatch.Groups[5].Value) * sortByFirst
-                                                         + double.Parse(regMatch.Groups[8].Value + "." + regMatch.Groups[10].Value) * sortBySecond));
+                        {
+                            CM.SortingIndex = double.Parse(regMatch.Groups[3].Value + "." + regMatch.Groups[5].Value) * sortByFirst + double.Parse(regMatch.Groups[8].Value + "." + regMatch.Groups[10].Value) * sortBySecond;
+                            sortList.Add(CM);
+                        }
+                        //if it's 2 ranges, we only look at the first number in the ranges to sort.
                         else if (Regex.IsMatch(regMatch.Groups[4].Value, @"\\|\/|-"))
-                            sortList.Add(new SortDBO(item.ToUpper(), double.Parse(regMatch.Groups[3].Value) * sortByFirst
-                                                         + double.Parse(regMatch.Groups[8].Value) * sortBySecond));
+                        {
+                            CM.SortingIndex = double.Parse(regMatch.Groups[3].Value) * sortByFirst + double.Parse(regMatch.Groups[8].Value) * sortBySecond;
+                            sortList.Add(CM);
+                        }
                         else
                             throw new Exception("Error with 4 numbers: couldn't find endpoint");
                     }
@@ -433,15 +444,18 @@ namespace DataHandling
             }
             //Then at the end, we sort the entire list with the same sorting algorithm. Changing this part could speed up this process
             //if you have a large amount of sizes, you are trying to sort at once. (this *should* be the fastest with up to 30 items)
-            InsersionSortByIndexFromGF(ref sortList);
+            InsersionSortByIndex(ref sortList);
 
             return sortList;
         }
 
 
 
-        //Sorting Algorithm for MarksSmartSort
-        private static void InsersionSortByIndexFromGF(ref List<SortDBO> sortList)
+        /// <summary>
+        /// The Actual sorting algorithm
+        /// </summary>
+        /// <param name="sortList"></param>
+        private static void InsersionSortByIndex(ref List<CanonicalModel> sortList)
         {
             bool sorted = false;
             while (!sorted)
@@ -449,7 +463,7 @@ namespace DataHandling
                 sorted = true;
                 for (int i = 1; i < sortList.Count; i++)
                 {
-                    if (sortList[i].Index < sortList[i - 1].Index)
+                    if (sortList[i].SortingIndex < sortList[i - 1].SortingIndex)
                     {
                         var temp = sortList[i - 1];
                         sortList[i - 1] = sortList[i];

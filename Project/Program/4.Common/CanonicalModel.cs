@@ -19,7 +19,10 @@ namespace Common
         public decimal CostPrice { get; set; }
         public int QuantitySold { get; set; }
         public decimal VAT { get; set; }
-        public string Unknown { get; set; } //to catch any values that for some reason doesn't have a header name that's not registered
+        public string ItemgroupName { get; set; }
+        public string Unknown { get; set; } = "_";//to catch any values that for some reason doesn't have a header name that's not registered
+        //SortingIndex is only for sorting. it doesn't come from the file, but is derrived from the Size in step 2.
+        public double SortingIndex { get; set; } = 0;
 
         public override string ToString()
         {

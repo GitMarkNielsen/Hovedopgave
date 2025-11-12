@@ -50,6 +50,9 @@ namespace LoadingFiles
                         case "QUANTITYSOLD":
                             CM.QuantitySold = int.Parse(data.AllRows[i].Columns[j]);
                             break;
+                        case "ITEMGROUPNAME":
+                            CM.ItemgroupName = data.AllRows[i].Columns[j];
+                            break;
                         default:
                             CM.Unknown = data.AllRows[i].Columns[j];
                             break;

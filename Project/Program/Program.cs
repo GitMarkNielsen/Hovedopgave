@@ -32,14 +32,30 @@ public class Program
             }
             #endregion
         }
-        //testing
-        CombineItems foobar = new();
+
+        //Compressing data for optimization
+        CombineItems CombineFactory = new();
         List<InhouseData> compressedData = new();
-        foreach(InhouseData parsedFile in parsedData)
+        foreach (InhouseData parsedFile in parsedData)
         {
-        InhouseData compressedFile = new();
-        compressedFile = foobar.Combine(parsedFile);
-        compressedData.Add(compressedFile);
+            InhouseData compressedFile = new();
+            compressedFile = CombineFactory.Combine(parsedFile);
+            compressedData.Add(compressedFile);
+        }
+
+        //sorting into categories so the sorting makes sense
+        Dictionary<string, List<CanonicalModel>> categories = new();
+        sortingBySize sorter = new();
+        foreach (InhouseData compressedFile in compressedData)
+        {
+            //each file
+            foreach (CanonicalModel row in compressedFile.Row)
+            {
+                //each row
+                categories[row.ItemgroupName].Add(row);
+            }
+            sorter.Sorter();
+
         }
 
         /*
