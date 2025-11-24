@@ -9,6 +9,9 @@ namespace DataHandling
 {
     internal class CombineItems
     {
+
+
+        //TODO: Theres a bug where the item category doesn't get added, or something like that. "Top was not found"
         public Dictionary<int,CanonicalModel> UniqueProducts { get; set; } = new Dictionary<int, CanonicalModel>();
         /// <summary>
         /// Compressed a full parsed CSV file into a smaller chunk, so when i sort, it doesn't have to sort x amount of the same size

@@ -54,7 +54,7 @@ public class Program
                 //each row
                 categories[row.ItemgroupName].Add(row);
             }
-            sorter.Sorter();
+            //sorter.Sorter();
 
         }
 
