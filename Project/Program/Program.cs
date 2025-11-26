@@ -1,6 +1,7 @@
 ﻿using Common;
 using DataHandling;
 using LoadingFiles;
+using System.Collections.Generic;
 
 
 public class Program
@@ -44,33 +45,47 @@ public class Program
         }
 
         //sorting into categories so the sorting makes sense
-        Dictionary<string, List<CanonicalModel>> categories = new();
-        sortingBySize sorter = new();
         foreach (InhouseData compressedFile in compressedData)
         {
+            Dictionary<string, List<CanonicalModel>> categories = new();
             //each file
+            //We add each type in the file to a dictionary
             foreach (CanonicalModel row in compressedFile.Row)
             {
-                //each row
-                categories[row.ItemgroupName].Add(row);
+                if (categories.ContainsKey(row.ItemgroupName))
+                    categories[row.ItemgroupName].Add(row);
+                else
+                {
+                    categories[row.ItemgroupName] = new(){row};
+                } 
             }
-            //sorter.Sorter();
+            //then sort within each category.
+            Dictionary<string, List<CanonicalModel>> sortedValues = new();
+            foreach (string category in categories.Keys)
+            {
+                List<CanonicalModel> sortedByCategory = sortingBySize.SmartSorter(categories[category]);
+                sortedValues[category] = (sortedByCategory);
+
+                #region Writing to console
+                Console.WriteLine("Sorted Data!");
+                foreach(CanonicalModel row in sortedValues[category])
+                {
+                Console.WriteLine(row.ToString());
+                }
+                #endregion
+            }
+
+
+
 
         }
 
-        /*
-         * I've compressed the data, now i just have to Sort all the T-shirts together, shoes together ect. 
-         * In the input-file, There's a column for "ItemgroupName" which will be what i need for this.
-         * 
-         * I'll sort them into lists seperating the categories, and call my smartSort on each list.
-         * 
-         * After that, they should be ready to output to a file.
-         * I'll just take each list and write the contents 1-1 into a JSON or CSV file
-         * it will be 1 file with all the data in it.
-         * I Can output to console how many of each category there is to make sure the data is correct
-         * 
-         * 
-         */
+        //_______________________________
+        //3. Writing Output
+        //-------------------------------
+
+
+
 
 
     }

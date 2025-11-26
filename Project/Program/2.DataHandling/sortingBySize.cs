@@ -15,14 +15,12 @@ namespace DataHandling
 
             //TODO: Remove the old regex
 
-            public static string UniReg { get; } = @"^(\D*)\W*((\d*)(\D*?)(\d*))(\D*?)((\d*)(\D*?)(\d*))\D*$";
-            public static string IsBraSize { get; } = @"^([A-z]+)\D*(\d+)$";
-            public static string IsTSize { get; } = @"^([sS])$|^([mM])$|^([lL])$|^[Xx]+([Ss])$|^[Xx]+([Ll])$|^\d{1,2}[xX]([Ss])$|^\d{1,2}[xX]([lL])$";
+            public static string UniReg { get; } = @"^([^0-9]*)[^A-z0-9]*(([0-9]*)([^0-9]*?)([0-9]*))([^0-9]*?)(([0-9]*)([^0-9]*?)([0-9]*))[^0-9]*$";
+            public static string IsBraSize { get; } = @"^([A-z]+)[^0-9]*([0-9]+)$";
+            public static string IsTSize { get; } = @"^([sS])$|^([mM])$|^([lL])$|^[Xx]+([Ss])$|^[Xx]+([Ll])$|^[0-9]{1,2}[xX]([Ss])$|^[0-9]{1,2}[xX]([lL])$";
             public static string TSizeLMS { get; } = @"[^mMsSlL]*([mMsSlL]){0,1}";
-            public static string TSizeExtra { get; } = @"^(\d+)[xX]|^([xX]+)";
-            //public static string TShirtToNumberCheck { get; } = @"^(\d+)\W*([\d*xX]*[sSmMlL])$|^([\d*xX]*[sSmMlL])\W*(\d+)$";
+            public static string TSizeExtra { get; } = @"^([0-9]+)[xX]|^([xX]+)";
             public static string TToNumber { get; } = @"^([0-9]+)[^A-z0-9]*([0-9xX]*[sSmMlL])$|^([0-9xX]*[sSmMlL])[^A-z0-9]*([0-9]+)$";
-            //public static string TshirtSizePlusRangeCheck { get; } = @"^([\dxX]*)([mMsSlL]{1})\D+?([\dxX]*)([mMsSlL]){1}(\d)*";
             public static string TSizeToRange { get; } = @"^([0-9xX]*)([mMsSlL]{1})[^0-9]+?([0-9xX]*)([mMsSlL]){1}([0-9])*";
             public static string Words { get; } = @"[A-z]+";
         }

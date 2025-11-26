@@ -4,9 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Program._3.WritingOutput
+namespace WritingOutput
 {
     internal class WriteToJSON
     {
+        public static void ObjectToJSON()
+        {
+
+        }
+
     }
 }
