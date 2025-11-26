@@ -13,37 +13,17 @@ namespace DataHandling
         private static class RegexDBO
         {
 
-            /* universalRegex has capture group 1 for non-digits (XXL, UK, US ect)
-                 * group 2 for an entire decimal value, and the same for group 5. 
-                 * Group 3 and 4 are the values in 2nd group
-                 * Group 6 and 7 are the values in 5th group
-                 */
-            public static string UniversalRegex { get; } = @"^(\D*)\W*((\d*)(\D*?)(\d*))(\D*?)((\d*)(\D*?)(\d*))\D*$";
-            /*Checks if the string starts with a letter, followed by one or many Digits
-             */
-            public static string BraSizesCheck { get; } = @"^([A-z]+)\D*(\d+)$";
-            /*The following regex is a combination of multiple. 
-             * ^([sS])$|^([mM])$|^([lL])$|^[Xx]+([Ss])$|^[Xx]+([Ll])$|^\d{1,2}[xX]([Ss])$|^\d{1,2}[xX]([lL])$
-             * it can be split into the following:
-             * caputre group 1. ^([sS])$              //matches any "s"
-             * caputre group 2. ^([mM])$              //matches any "m"
-             * caputre group 3. ^([lL])$              //matches any "l"
-             * caputre group 4. ^[Xx]+([Ss])$         //matches any number of "x" + "s"
-             * caputre group 5. ^[Xx]+([Ll])$         //matches any number of "x" + "l"
-             * caputre group 6. ^\d{1,2}[xX]([Ss])$   //matches any number between "1-99" + "x" + "s"
-             * caputre group 7. ^\d{1,2}[xX]([lL])$   //matches any number between "1-99" + "x" + "l"
-             * you could combine it into 3 instead, but it's split up more, so we can assign the size to the correct list.
-             * We have a list for each variant of S an L, and then we also have M just as is.
-             * each of the individual regex expressions has a capture group, that checks if it ends in S or L. 
-             * but since they are combined into one, then the capture group for "number + x + L or S" comes after the one for just S or L.
-             * meaning we can check capture group 3, if the size is "l"
-             * then we can use the match (capture group 0) and asign that to the list for that size category. 
-             */
-            public static string TShirtSizeCheck { get; } = @"^([sS])$|^([mM])$|^([lL])$|^[Xx]+([Ss])$|^[Xx]+([Ll])$|^\d{1,2}[xX]([Ss])$|^\d{1,2}[xX]([lL])$";
-            public static string TshirtSizeLMS { get; } = @"[^mMsSlL]*([mMsSlL]){0,1}";
-            public static string TshirtSizeAmountOfExtra { get; } = @"^(\d+)[xX]|^([xX]+)";
-            public static string TShirtToNumberCheck { get; } = @"^(\d+)\W*([\d*xX]*[sSmMlL])$|^([\d*xX]*[sSmMlL])\W*(\d+)$";
-            public static string TshirtSizePlusRangeCheck { get; } = @"^([\dxX]*)([mMsSlL]{1})\D+?([\dxX]*)([mMsSlL]){1}(\d)*";
+            //TODO: Remove the old regex
+
+            public static string UniReg { get; } = @"^(\D*)\W*((\d*)(\D*?)(\d*))(\D*?)((\d*)(\D*?)(\d*))\D*$";
+            public static string IsBraSize { get; } = @"^([A-z]+)\D*(\d+)$";
+            public static string IsTSize { get; } = @"^([sS])$|^([mM])$|^([lL])$|^[Xx]+([Ss])$|^[Xx]+([Ll])$|^\d{1,2}[xX]([Ss])$|^\d{1,2}[xX]([lL])$";
+            public static string TSizeLMS { get; } = @"[^mMsSlL]*([mMsSlL]){0,1}";
+            public static string TSizeExtra { get; } = @"^(\d+)[xX]|^([xX]+)";
+            //public static string TShirtToNumberCheck { get; } = @"^(\d+)\W*([\d*xX]*[sSmMlL])$|^([\d*xX]*[sSmMlL])\W*(\d+)$";
+            public static string TToNumber { get; } = @"^([0-9]+)[^A-z0-9]*([0-9xX]*[sSmMlL])$|^([0-9xX]*[sSmMlL])[^A-z0-9]*([0-9]+)$";
+            //public static string TshirtSizePlusRangeCheck { get; } = @"^([\dxX]*)([mMsSlL]{1})\D+?([\dxX]*)([mMsSlL]){1}(\d)*";
+            public static string TSizeToRange { get; } = @"^([0-9xX]*)([mMsSlL]{1})[^0-9]+?([0-9xX]*)([mMsSlL]){1}([0-9])*";
             public static string Words { get; } = @"[A-z]+";
         }
         /// <summary>
@@ -65,12 +45,12 @@ namespace DataHandling
             foreach (CanonicalModel CM in listOfSizes)
             {
                 string item = CM.Size;
-                var regMatch = Regex.Match(item, RegexDBO.UniversalRegex);
+                var regMatch = Regex.Match(item, RegexDBO.UniReg);
                 //Since EU 45 would trigger brasize, we run this for each element. (collapsible with the region to clean it up a bit)
                 #region BraSizeFix
-                if (Regex.IsMatch(item, RegexDBO.BraSizesCheck))
+                if (Regex.IsMatch(item, RegexDBO.IsBraSize))
                 {
-                    var braLetterCheck = Regex.Match(item, RegexDBO.BraSizesCheck).Groups[1].Value.ToUpper().ToCharArray();
+                    var braLetterCheck = Regex.Match(item, RegexDBO.IsBraSize).Groups[1].Value.ToUpper().ToCharArray();
                     isABraSizeFix = true; //assume it's a brasize first
                     if (braLetterCheck.Count() > 1)
                     {
@@ -91,7 +71,7 @@ namespace DataHandling
                 #endregion
 
                 //"Algorith" starts here ↓
-                if (Regex.IsMatch(regMatch.Groups[0].Value, RegexDBO.TShirtSizeCheck))//tShirtSize
+                if (Regex.IsMatch(regMatch.Groups[0].Value, RegexDBO.IsTSize))//tShirtSize
                 {
 
                     /* S M AND L
@@ -109,8 +89,8 @@ namespace DataHandling
                      */
 
                     //breaking up the TshirtSize into it's amount of "extra", and it's identifier (Large,Medium or Small)(LMorS)
-                    var amountOfExtra = Regex.Match(item, RegexDBO.TshirtSizeAmountOfExtra);
-                    var LMorS = Regex.Match(item, RegexDBO.TshirtSizeLMS);
+                    var amountOfExtra = Regex.Match(item, RegexDBO.TSizeExtra);
+                    var LMorS = Regex.Match(item, RegexDBO.TSizeLMS);
 
                     var LMorSLetter = LMorS.Groups[1].Value.ToUpper().ToCharArray()[0];
                     int IndexValue = 1;
@@ -161,7 +141,7 @@ namespace DataHandling
                      * (xxl = 32.000) (3xl = 32.999) (xxxl = 33.000)
                      */
                 }
-                else if (Regex.IsMatch(regMatch.Groups[0].Value, RegexDBO.TshirtSizePlusRangeCheck)) // if it's a tshirtSizeRange. ie. L-2xl
+                else if (Regex.IsMatch(regMatch.Groups[0].Value, RegexDBO.TSizeToRange)) // if it's a tshirtSizeRange. ie. L-2xl
                 {
                     /*
                      * if it's sort by first, then the Index is the 1st value as the big valley, and the 2nd value in the valley.
@@ -170,17 +150,17 @@ namespace DataHandling
 
 
                     //getting the match to work with. Group 0 is the entire string.
-                    var comparison = Regex.Match(regMatch.Groups[0].Value, RegexDBO.TshirtSizePlusRangeCheck);
+                    var comparison = Regex.Match(regMatch.Groups[0].Value, RegexDBO.TSizeToRange);
 
                     //setup for the 1st value                   Group 0 here is the amount of extra in the first value
-                    var amountOfExtraFirst = Regex.Match(comparison.Groups[0].Value, RegexDBO.TshirtSizeAmountOfExtra);
+                    var amountOfExtraFirst = Regex.Match(comparison.Groups[0].Value, RegexDBO.TSizeExtra);
                     var LMorSFirst = comparison.Groups[2].Value;
                     var LMorSValueFirst = LMorSFirst.ToUpper().ToCharArray()[0];
                     int firstIndexValue = 1;
                     int SorLFirst = -1;
 
                     //setup for the 2nd value                   Group 3 here is the amount of extra in the second value
-                    var amountOfExtraSecond = Regex.Match(comparison.Groups[3].Value, RegexDBO.TshirtSizeAmountOfExtra);
+                    var amountOfExtraSecond = Regex.Match(comparison.Groups[3].Value, RegexDBO.TSizeExtra);
                     var LMorSSecond = comparison.Groups[4].Value;
                     var LMorSValueSecond = LMorSSecond.ToUpper().ToCharArray()[0];
                     int secondIndexValue = 1;
@@ -272,11 +252,11 @@ namespace DataHandling
                         }
                     }
                 }
-                else if (Regex.IsMatch(regMatch.Groups[0].Value, RegexDBO.TShirtToNumberCheck))
+                else if (Regex.IsMatch(regMatch.Groups[0].Value, RegexDBO.TToNumber))
                 {
                     //tshirt size with 1 or 2 numbers. (L32 or 5XS17)
 
-                    var tShirtToNumberRegex = Regex.Match(item, RegexDBO.TShirtToNumberCheck);
+                    var tShirtToNumberRegex = Regex.Match(item, RegexDBO.TToNumber);
                     double numberValue = 0;
                     string wordsValue = "";
                     if (Regex.IsMatch(tShirtToNumberRegex.Groups[3].Value, RegexDBO.Words))
@@ -291,8 +271,8 @@ namespace DataHandling
 
                     }
 
-                    var amountOfExtra = Regex.Match(wordsValue, RegexDBO.TshirtSizeAmountOfExtra);
-                    var LMorS = Regex.Match(wordsValue, RegexDBO.TshirtSizeLMS);
+                    var amountOfExtra = Regex.Match(wordsValue, RegexDBO.TSizeExtra);
+                    var LMorS = Regex.Match(wordsValue, RegexDBO.TSizeLMS);
                     var LMorSValue = LMorS.Groups[1].Value.ToUpper().ToCharArray()[0];
                     int IndexValue = 1;
                     double SorL = -1;
@@ -325,7 +305,7 @@ namespace DataHandling
                 else if (isABraSizeFix)
                 //BraSizes
                 {
-                    var braRegex = Regex.Match(item, RegexDBO.BraSizesCheck);
+                    var braRegex = Regex.Match(item, RegexDBO.IsBraSize);
                     var braLetter = braRegex.Groups[1].Value.ToString().ToUpper().ToCharArray();
                     bool isABraSize = true;
                     int HigherSize = braLetter.Count() - 1;
