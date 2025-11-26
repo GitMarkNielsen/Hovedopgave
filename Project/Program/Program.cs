@@ -65,7 +65,7 @@ public class Program
             foreach (string category in categories.Keys)
             {
                 List<CanonicalModel> sortedByCategory = sortingBySize.SmartSorter(categories[category]);
-                sortedValues[category] = (sortedByCategory);
+                sortedValues[category] = sortedByCategory;
 
                 #region Console
                 Console.WriteLine("Sorted Data!");
