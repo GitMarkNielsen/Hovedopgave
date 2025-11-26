@@ -44,6 +44,7 @@ public class Program
             compressedData.Add(compressedFile);
         }
 
+        List<Dictionary<string, List<CanonicalModel>>> finishedData = new();
         //sorting into categories so the sorting makes sense
         foreach (InhouseData compressedFile in compressedData)
         {
