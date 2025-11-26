@@ -66,7 +66,7 @@ public class Program
                 List<CanonicalModel> sortedByCategory = sortingBySize.SmartSorter(categories[category]);
                 sortedValues[category] = (sortedByCategory);
 
-                #region Writing to console
+                #region Console
                 Console.WriteLine("Sorted Data!");
                 foreach(CanonicalModel row in sortedValues[category])
                 {
@@ -74,10 +74,6 @@ public class Program
                 }
                 #endregion
             }
-
-
-
-
         }
 
         //_______________________________
