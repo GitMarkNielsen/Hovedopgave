@@ -2,6 +2,7 @@
 using DataHandling;
 using LoadingFiles;
 using System.Collections.Generic;
+using WritingOutput;
 
 
 public class Program
@@ -45,6 +46,7 @@ public class Program
         }
 
         List<Dictionary<string, List<CanonicalModel>>> finishedData = new();
+        Dictionary<string, List<CanonicalModel>> sortedValues = new();
         //sorting into categories so the sorting makes sense
         foreach (InhouseData compressedFile in compressedData)
         {
@@ -61,7 +63,7 @@ public class Program
                 } 
             }
             //then sort within each category.
-            Dictionary<string, List<CanonicalModel>> sortedValues = new();
+            
             foreach (string category in categories.Keys)
             {
                 List<CanonicalModel> sortedByCategory = sortingBySize.SmartSorter(categories[category]);
@@ -81,6 +83,7 @@ public class Program
         //3. Writing Output
         //-------------------------------
 
+        WriteToJSON.ObjectToJSON(sortedValues);
 
 
 
