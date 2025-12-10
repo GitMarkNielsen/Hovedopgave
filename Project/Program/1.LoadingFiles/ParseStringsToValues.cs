@@ -32,22 +32,13 @@ namespace LoadingFiles
                         case "SIZE":
                             CM.Size = data.AllRows[i].Columns[j];
                             break;
-                        case "TURNOVER":
-                            CM.Turnover = Decimal.Parse(data.AllRows[i].Columns[j]);
+                        case "SOLDPRICE":
+                            CM.SalesPrice = Decimal.Parse(data.AllRows[i].Columns[j]);
                             break;
-                        case "GROSSPROFIT":
-                            CM.GrossProfit=Decimal.Parse(data.AllRows[i].Columns[j]);
+                        case "BOUGHTPRICE":
+                            CM.BoughtPrice=Decimal.Parse(data.AllRows[i].Columns[j]);
                             break;
-                        case "COSTPRICE":
-                            CM.CostPrice = Decimal.Parse(data.AllRows[i].Columns[j]);
-                            break;
-                        case "VAT":
-                            CM.VAT = Decimal.Parse(data.AllRows[i].Columns[j]);
-                            break;
-                        case "SOLDQUANTITY":
-                            CM.QuantitySold = int.Parse(data.AllRows[i].Columns[j]);
-                            break;
-                        case "QUANTITYSOLD":
+                        case "SALES":
                             CM.QuantitySold = int.Parse(data.AllRows[i].Columns[j]);
                             break;
                         case "ITEMGROUPNAME":

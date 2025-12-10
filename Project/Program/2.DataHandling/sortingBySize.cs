@@ -16,7 +16,7 @@ namespace DataHandling
             //TODO: Remove the old regex
 
             public static string UniReg { get; } = @"^([^0-9]*)[^A-z0-9]*(([0-9]*)([^0-9]*?)([0-9]*))([^0-9]*?)(([0-9]*)([^0-9]*?)([0-9]*))[^0-9]*$";
-            public static string IsBraSize { get; } = @"^([A-z]+)[^0-9]*([0-9]+)$";
+            public static string IsBraSize { get; } = @"^([0-9]+)[^0-9A-z]*([A-z]+)$";
             public static string IsTSize { get; } = @"^([sS])$|^([mM])$|^([lL])$|^[Xx]+([Ss])$|^[Xx]+([Ll])$|^[0-9]{1,2}[xX]([Ss])$|^[0-9]{1,2}[xX]([lL])$";
             public static string TSizeLMS { get; } = @"[^mMsSlL]*([mMsSlL]){0,1}";
             public static string TSizeExtra { get; } = @"^([0-9]+)[xX]|^([xX]+)";
@@ -48,7 +48,7 @@ namespace DataHandling
                 #region BraSizeFix
                 if (Regex.IsMatch(item, RegexDBO.IsBraSize))
                 {
-                    var braLetterCheck = Regex.Match(item, RegexDBO.IsBraSize).Groups[1].Value.ToUpper().ToCharArray();
+                    var braLetterCheck = Regex.Match(item, RegexDBO.IsBraSize).Groups[2].Value.ToUpper().ToCharArray();
                     isABraSizeFix = true; //assume it's a brasize first
                     if (braLetterCheck.Count() > 1)
                     {
@@ -304,7 +304,7 @@ namespace DataHandling
                 //BraSizes
                 {
                     var braRegex = Regex.Match(item, RegexDBO.IsBraSize);
-                    var braLetter = braRegex.Groups[1].Value.ToString().ToUpper().ToCharArray();
+                    var braLetter = braRegex.Groups[2].Value.ToString().ToUpper().ToCharArray();
                     bool isABraSize = true;
                     int HigherSize = braLetter.Count() - 1;
                     if (braLetter.Count() > 1)
@@ -326,6 +326,7 @@ namespace DataHandling
                     }
                     if (isABraSize)
                     { //                                   ↓<1>                                             ↓<2>
+                      //                    {                           }                   {                                               }
                         CM.SortingIndex = ((int)braLetter[0] + HigherSize) * sortByFirst + int.Parse(braRegex.Groups[2].Value) * sortBySecond;
                         sortList.Add(CM);
                     }

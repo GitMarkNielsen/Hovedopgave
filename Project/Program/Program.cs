@@ -1,8 +1,9 @@
 ﻿using Common;
 using DataHandling;
 using LoadingFiles;
-using System.Collections.Generic;
+using Tests;
 using WritingOutput;
+
 
 
 public class Program
@@ -11,6 +12,10 @@ public class Program
 
     public static void Main(string[] args)
     {
+
+        GenerateInputFiles testmaker = new();
+        testmaker.MakeData();
+
         Console.WriteLine($"Searching folder: {FolderToSearch}");
         LoadAllFiiles loadAllFiiles = new();
         List<CSV_DBO> AllFiles = loadAllFiiles.LoadCSVFiles(FolderToSearch);
@@ -23,16 +28,6 @@ public class Program
             {
                 parsedData.Add(parser.ParseValues(LoadedFile));
             }
-            //Debug writing contents to console ↓
-            #region Debug
-            for (int i = 0; i < parsedData.Count; i++)
-            {
-                foreach (CanonicalModel canonicalModel in parsedData[i].Row)
-                {
-                    Console.WriteLine(canonicalModel.ToString());
-                }
-            }
-            #endregion
         }
 
         //Compressing data for optimization
@@ -71,10 +66,6 @@ public class Program
 
                 #region Console
                 Console.WriteLine("Sorted Data!");
-                foreach(CanonicalModel row in sortedValues[category])
-                {
-                Console.WriteLine(row.ToString());
-                }
                 #endregion
             }
         }

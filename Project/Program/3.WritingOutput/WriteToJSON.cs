@@ -13,7 +13,7 @@ namespace WritingOutput
         public static void ObjectToJSON(Dictionary<string, List<CanonicalModel>> sortedValues)
         {
             string objToJSON = JsonSerializer.Serialize(sortedValues);
-            File.WriteAllText("C:\\Projects\\Hovedopgave\\Hovedopgave\\Project\\Program\\5.Output\\output.txt", objToJSON);
+            File.WriteAllText("../../../5.Output/output.json", objToJSON);
         }
 
     }

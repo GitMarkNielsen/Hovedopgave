@@ -9,13 +9,12 @@ public class LoadAllFiiles
     private List<CSV_DBO> AllDataFilesLoaded { get; set; } = new List<CSV_DBO>();
     public List<CSV_DBO> LoadCSVFiles(string FolderToSearch)
     {
-       //AllFilePaths = Directory.GetFiles(FolderToSearch);
-       //foreach (string file in AllFilePaths)
-       //{
-            //Console.WriteLine("Reading from file: " + file);
-         //   using (var reader = new StreamReader(file))
-        using (var reader = new StreamReader("C:\\Projects\\Hovedopgave\\Hovedopgave\\Project\\Program\\0.InputFiles\\TextFile1.csv"))
+        AllFilePaths = Directory.GetFiles(FolderToSearch);
+        foreach (string file in AllFilePaths)
         {
+            Console.WriteLine("Reading from file: " + file);
+            using (var reader = new StreamReader(file))
+            {
                 //if the file has no data
                 if (reader.EndOfStream)
                 {
@@ -50,9 +49,10 @@ public class LoadAllFiiles
             //send each file down the pipeline
             return AllDataFilesLoaded;
 
-        //}
+        }
         return AllDataFilesLoaded;
     }
+
     private char FindSeperationChar(string RowOfCSV)
     {
         //have the most likely at first, as a fix for if every field has a decimal
@@ -65,7 +65,7 @@ public class LoadAllFiiles
             '\\',
             '/',
             ',',
-            '.']; 
+            '.'];
         int highest = 0;
         char seperatorCharInTheCSV = '.';
         foreach (char c in possibleSeperators)

@@ -20,11 +20,9 @@ namespace DataHandling
         /// <returns>new InhouseData type, that contains the compressed version of the input InhouseData</returns>
         public InhouseData Combine(InhouseData FullParsedCSV)
         {
+            //each row of the CSV
             foreach (CanonicalModel CM in FullParsedCSV.Row)
             {
-                //If price is different on the same product, then this will miss it.
-                //I'll probably need to make sure the price 
-                //doesn't change, and if it does, make a case for that.
                 if (UniqueProducts.ContainsKey(CM.EAN))
                 {
                     UniqueProducts[CM.EAN].QuantitySold += CM.QuantitySold;
@@ -40,8 +38,7 @@ namespace DataHandling
             foreach (var item in UniqueProducts) 
             {
                 CanonicalModel combinedCM = item.Value;
-                combinedCM.GrossProfit = item.Value.GrossProfit * item.Value.QuantitySold;
-                combinedCM.Turnover = item.Value.Turnover * item.Value.QuantitySold;
+                combinedCM.GrossProfit = (item.Value.SalesPrice-item.Value.BoughtPrice) * item.Value.QuantitySold;
                 combinedData.Row.Add(combinedCM);
             }
             return combinedData;
