@@ -11,12 +11,12 @@ namespace WritingOutput
 {
     internal class WriteToJSON
     {
-        public static void ObjectToJSON(Dictionary<string, List<CanonicalModel>> sortedValues)
+        public static void ObjectToJSON(OutputFormatter stuffToSerialize)
         {
             string docPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            OutputFormatter.FullDetails = sortedValues;
-              var x  = JsonSerializer.Serialize(OutputFormatter.FullDetails, new JsonSerializerOptions { WriteIndented = true });
-            File.WriteAllText(docPath + "/output.json", OutputFormatter);
+            
+            string objToJSON = JsonSerializer.Serialize(stuffToSerialize, new JsonSerializerOptions { WriteIndented = true });
+            File.WriteAllText(docPath + "/output.json", objToJSON);
         }
 
     }

@@ -11,16 +11,16 @@ namespace Tests
 {
     internal class GenerateInputFiles
     {
-
-
-
         //Setup
         //↓ length of file
         int finalLineCount = 2500;
 
         //↓Fine tune possible data
         List<CategoryDBO> categoryOptions = new()
-        { new CategoryDBO("Top", 20, 80, ["3XS","2XS","XXS","X242S", "S", "M", "L", "XL", "2XL","3XL","4XL"]),
+        { 
+          // <1> = min price <2> = max price
+          //                     <1> <2>  
+          new CategoryDBO("Top", 20, 80, ["3XS","2XS","XXS","X242S", "S", "M", "L", "XL", "2XL","3XL","4XL"]),
           new CategoryDBO("Pants", 40, 120, ["28W/30L", "30W/32L", "32W/32L", "34W/34L", "36W/34L", "38W/36L"]),
           new CategoryDBO("Socks", 5, 15, ["One Size","25-30" ,"30-36", "36-45"]),
           new CategoryDBO("Bra", 30, 70, ["32A", "32BB", "32B", "32C", "36C", "36DD", "36D", "40D"]),
@@ -36,6 +36,8 @@ namespace Tests
         {
             MakeFictionalProducts();
             GenerateCSV();
+            //generate a CSV with same delimiter as the decimal separator
+            GenerateInvalidCSV(',');
         }
 
         private void MakeFictionalProducts()
@@ -88,6 +90,32 @@ namespace Tests
 
 
                 lines.Add($"{EAN};{salesQuantity};{Size};{soldprice};{boughtPrice};{itemGroupName}");
+            }
+            File.AppendAllLines(filePath, lines);
+        }
+
+        private void GenerateInvalidCSV(char delimeter)
+        {
+            string headers = $"EAN{delimeter}Sales{delimeter}Size{delimeter}SoldPrice{delimeter}BoughtPrice{delimeter}ItemGroupName\r\n";
+
+
+            //writingData
+            string filePath = "../../../0.InputFiles/DummyDataInvalid.csv";
+            File.WriteAllText(filePath, headers);
+            List<string> lines = new List<string>();
+            for (int i = 0; i < finalLineCount; i++)
+            {
+                int productNumber = rand.Next(0, availableProducts.Count);
+
+                int salesQuantity = rand.Next(0, 10);
+                int EAN = availableProducts[productNumber].EAN;
+                string Size = availableProducts[productNumber].Size;
+                double soldprice = availableProducts[productNumber].SoldPrice;
+                double boughtPrice = availableProducts[productNumber].BoughtPrice;
+                string itemGroupName = availableProducts[productNumber].ItemGroupName;
+
+
+                lines.Add($"{EAN}{delimeter}{salesQuantity}{delimeter}{Size}{delimeter}{soldprice}{delimeter}{boughtPrice}{delimeter}{itemGroupName}");
             }
             File.AppendAllLines(filePath, lines);
         }

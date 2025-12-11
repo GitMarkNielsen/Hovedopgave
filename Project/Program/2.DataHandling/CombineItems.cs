@@ -1,5 +1,4 @@
 ﻿using Common;
-using Program._4.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,18 +41,20 @@ namespace DataHandling
                 combinedCM.GrossProfit = (item.Value.SalesPrice-item.Value.BoughtPrice) * item.Value.QuantitySold;
                 combinedData.Row.Add(combinedCM);
             }
-            var foo = combinedData.Row.Select(x => x.ItemgroupName).Distinct();
-            foreach (var item in foo) 
+
+            //using linq to combine data to see if my own methods is losing data
+            var allItemGroups = combinedData.Row.Select(x => x.ItemgroupName).Distinct();
+            foreach (string itemGroupName in allItemGroups) 
             {
                 Summary sum = new();
 
-                var bar = combinedData.Row.Where(x => x.ItemgroupName == item).ToList();
+                var bar = combinedData.Row.Where(x => x.ItemgroupName == itemGroupName).ToList();
 
-                sum.SummaryName = item;
+                sum.SummaryName = itemGroupName;
                 sum.TotalSalesLinq = bar.Sum(x => x.QuantitySold);
                 sum.GrossProfitLinq = bar.Sum(x => x.GrossProfit);
 
-                OutputFormatter.summaries.Add(sum);
+                SummariesStaticList.Summaries.Add(sum);
             }
 
             return combinedData;

@@ -63,18 +63,16 @@ public class Program
             {
                 List<CanonicalModel> sortedByCategory = sortingBySize.SmartSorter(categories[category]);
                 sortedValues[category] = sortedByCategory;
-
-                #region Console
-                Console.WriteLine("Sorted Data!");
-                #endregion
             }
         }
 
         //_______________________________
         //3. Writing Output
         //-------------------------------
+        OutputFormatter outputFormatter = new OutputFormatter();
+        outputFormatter.FullDetails = sortedValues;
 
-        WriteToJSON.ObjectToJSON(sortedValues);
+        WriteToJSON.ObjectToJSON(outputFormatter);
 
 
 
