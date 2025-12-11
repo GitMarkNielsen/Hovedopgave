@@ -16,15 +16,15 @@ namespace Tests
 
         //Setup
         //↓ length of file
-        int finalLineCount = 20;
+        int finalLineCount = 2500;
 
         //↓Fine tune possible data
         List<CategoryDBO> categoryOptions = new()
-        { //new CategoryDBO("Top", 20, 80, ["3XS","2XS","XXS","XS", "S", "M", "L", "XL", "2XL","3XL","4XL"]),
-         // new CategoryDBO("Pants", 40, 120, ["28W/30L", "30W/32L", "32W/32L", "34W/34L", "36W/34L", "38W/36L"]),
-         // new CategoryDBO("Socks", 5, 15, ["One Size","25-30" ,"30-36", "36-45"]),
-          new CategoryDBO("Bra", 30, 70, ["32A", "32BB", "34B", "34C", "36C", "36DD", "38D"]),
-          //new CategoryDBO("Jacket", 100,450,["S", "M", "L", "XL", "2XL"]),
+        { new CategoryDBO("Top", 20, 80, ["3XS","2XS","XXS","X242S", "S", "M", "L", "XL", "2XL","3XL","4XL"]),
+          new CategoryDBO("Pants", 40, 120, ["28W/30L", "30W/32L", "32W/32L", "34W/34L", "36W/34L", "38W/36L"]),
+          new CategoryDBO("Socks", 5, 15, ["One Size","25-30" ,"30-36", "36-45"]),
+          new CategoryDBO("Bra", 30, 70, ["32A", "32BB", "32B", "32C", "36C", "36DD", "36D", "40D"]),
+          new CategoryDBO("Jacket", 100,450,["S", "M", "L", "XL", "2XL"]),
         };
 
 

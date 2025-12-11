@@ -6,6 +6,7 @@ public class LoadAllFiiles
 {
 
     public string[] AllFilePaths { get; set; }
+    private List<CSV_DBO> AllDataOnFile { get; set; } = new List<CSV_DBO>();
     private List<CSV_DBO> AllDataFilesLoaded { get; set; } = new List<CSV_DBO>();
     public List<CSV_DBO> LoadCSVFiles(string FolderToSearch)
     {
@@ -19,7 +20,7 @@ public class LoadAllFiiles
                 if (reader.EndOfStream)
                 {
                     Console.WriteLine("File has no data");
-                    return AllDataFilesLoaded;
+                    
                 }
 
                 CSV_DBO CSVData = new();

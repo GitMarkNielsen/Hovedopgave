@@ -12,9 +12,6 @@ namespace DataHandling
     {
         private static class RegexDBO
         {
-
-            //TODO: Remove the old regex
-
             public static string UniReg { get; } = @"^([^0-9]*)[^A-z0-9]*(([0-9]*)([^0-9]*?)([0-9]*))([^0-9]*?)(([0-9]*)([^0-9]*?)([0-9]*))[^0-9]*$";
             public static string IsBraSize { get; } = @"^([0-9]+)[^0-9A-z]*([A-z]+)$";
             public static string IsTSize { get; } = @"^([sS])$|^([mM])$|^([lL])$|^[Xx]+([Ss])$|^[Xx]+([Ll])$|^[0-9]{1,2}[xX]([Ss])$|^[0-9]{1,2}[xX]([lL])$";
@@ -29,8 +26,7 @@ namespace DataHandling
         /// </summary>
         /// <param name="listOfSizes"></param>
         /// <param name="sortByFirstCheck"></param>
-        /// <returns></returns>
-        /// <exception cref="Exception"></exception>
+        /// <returns>List of canonicalModels that's sorted by size.</returns>
         public static List<CanonicalModel> SmartSorter(List<CanonicalModel> listOfSizes, bool sortByFirstCheck = true)
         {
             //We do some setup that's common for each item
@@ -306,7 +302,8 @@ namespace DataHandling
                     var braRegex = Regex.Match(item, RegexDBO.IsBraSize);
                     var braLetter = braRegex.Groups[2].Value.ToString().ToUpper().ToCharArray();
                     bool isABraSize = true;
-                    int HigherSize = braLetter.Count() - 1;
+                    int HigherSize = 0;
+                    //int HigherSize = braLetter.Count() - 1;
                     if (braLetter.Count() > 1)
                     {
                         char firstChar = braLetter[0];
@@ -325,9 +322,10 @@ namespace DataHandling
                         }
                     }
                     if (isABraSize)
-                    { //                                   ↓<1>                                             ↓<2>
-                      //                    {                           }                   {                                               }
-                        CM.SortingIndex = ((int)braLetter[0] + HigherSize) * sortByFirst + int.Parse(braRegex.Groups[2].Value) * sortBySecond;
+                    {
+                      //                                   ↓<1>                                                            ↓<2>
+                      //                    {                                                }             {                                               }
+                        CM.SortingIndex = int.Parse(braRegex.Groups[1].Value) * sortByFirst + ((int)braLetter[0]*100 + (braLetter.Length - 1) + HigherSize) * sortBySecond;
                         sortList.Add(CM);
                     }
                     /*
