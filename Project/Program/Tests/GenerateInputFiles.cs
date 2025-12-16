@@ -32,12 +32,12 @@ namespace Tests
         List<FictionalProduct> availableProducts = new();
         Random rand = new Random();
 
-        public void MakeData()
+        public void MakeData(string folderPath)
         {
             MakeFictionalProducts();
-            GenerateCSV();
+            GenerateCSV(folderPath);
             //generate a CSV with same delimiter as the decimal separator
-            GenerateInvalidCSV(',');
+            GenerateInvalidCSV(folderPath, ',');
         }
 
         private void MakeFictionalProducts()
@@ -68,13 +68,13 @@ namespace Tests
 
 
 
-        private void GenerateCSV()
+        private void GenerateCSV(string folderPath)
         {
             string headers = "EAN;Sales;Size;SoldPrice;BoughtPrice;ItemGroupName\r\n";
 
 
             //writingData
-            string filePath = "../../../0.InputFiles/DummyData.csv";
+            string filePath = folderPath + "/DummyData.csv";
             File.WriteAllText(filePath, headers);
             List<string> lines = new List<string>();
             for (int i = 0; i < finalLineCount; i++)
@@ -94,13 +94,13 @@ namespace Tests
             File.AppendAllLines(filePath, lines);
         }
 
-        private void GenerateInvalidCSV(char delimeter)
+        private void GenerateInvalidCSV(string folderpath, char delimeter)
         {
             string headers = $"EAN{delimeter}Sales{delimeter}Size{delimeter}SoldPrice{delimeter}BoughtPrice{delimeter}ItemGroupName\r\n";
 
 
             //writingData
-            string filePath = "../../../0.InputFiles/DummyDataInvalid.csv";
+            string filePath = folderpath + "/DummyDataInvalid.csv";
             File.WriteAllText(filePath, headers);
             List<string> lines = new List<string>();
             for (int i = 0; i < finalLineCount; i++)

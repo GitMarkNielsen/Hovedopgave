@@ -34,7 +34,7 @@ namespace DataHandling
             }
             
             InhouseData combinedData = new();
-            //TODO: Add each field that needs to be multiplied in the foreach.
+
             foreach (var item in UniqueProducts) 
             {
                 CanonicalModel combinedCM = item.Value;

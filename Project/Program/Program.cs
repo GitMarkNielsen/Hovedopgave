@@ -8,13 +8,13 @@ using WritingOutput;
 
 public class Program
 {
-    public static string FolderToSearch { get; set; } = "../../../0.InputFiles";
+    public static string FolderToSearch { get; set; } = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/GoFactLight";
 
     public static void Main(string[] args)
     {
 
         GenerateInputFiles testmaker = new();
-        testmaker.MakeData();
+        testmaker.MakeData(FolderToSearch);
 
         Console.WriteLine($"Searching folder: {FolderToSearch}");
         LoadAllFiiles loadAllFiiles = new();
@@ -74,7 +74,8 @@ public class Program
 
         WriteToJSON.ObjectToJSON(outputFormatter);
 
-
+        WriteToCSV toCSV = new WriteToCSV();
+        toCSV.ToCSV(outputFormatter);
 
 
     }
