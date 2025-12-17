@@ -94,6 +94,11 @@ namespace Tests
             File.AppendAllLines(filePath, lines);
         }
 
+        /// <summary>
+        /// Testing method to see what happens with an invalid CSV
+        /// </summary>
+        /// <param name="folderpath"></param>
+        /// <param name="delimeter"></param>
         private void GenerateInvalidCSV(string folderpath, char delimeter)
         {
             string headers = $"EAN{delimeter}Sales{delimeter}Size{delimeter}SoldPrice{delimeter}BoughtPrice{delimeter}ItemGroupName\r\n";

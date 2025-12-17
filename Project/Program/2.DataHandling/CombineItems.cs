@@ -42,18 +42,21 @@ namespace DataHandling
                 combinedData.Row.Add(combinedCM);
             }
 
-            //using linq to combine data to see if my own methods is losing data
+            //using linq to combine data for the summary. Just another tool ^^
+
+            //select each itemGroupName
             var allItemGroups = combinedData.Row.Select(x => x.ItemgroupName).Distinct();
             foreach (string itemGroupName in allItemGroups) 
             {
                 Summary sum = new();
-
+                //get all rows where the itemgroupname is what we're looking for
                 var bar = combinedData.Row.Where(x => x.ItemgroupName == itemGroupName).ToList();
 
                 sum.SummaryName = itemGroupName;
+                //getting the sum of sales and profit for each category.
                 sum.TotalSalesLinq = bar.Sum(x => x.QuantitySold);
                 sum.GrossProfitLinq = bar.Sum(x => x.GrossProfit);
-
+                //adding the result to a static dbo so we dont need to carry it through the code.
                 SummariesStaticList.Summaries.Add(sum);
             }
 

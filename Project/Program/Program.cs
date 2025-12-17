@@ -22,6 +22,7 @@ public class Program
 
         List<InhouseData> parsedData = new();
         //using statement, so it will get cleaned up as soon as the parser isn't needed anymore.
+        //probably not needed, but i wanted to do this ¯\_(ツ)_/¯
         using (ParseStringsToValues parser = new())
         {
             foreach (CSV_DBO LoadedFile in AllFiles)
@@ -41,6 +42,7 @@ public class Program
         }
 
         List<Dictionary<string, List<CanonicalModel>>> finishedData = new();
+        //string is the category, list<CM> is all the entries within that category
         Dictionary<string, List<CanonicalModel>> sortedValues = new();
         //sorting into categories so the sorting makes sense
         foreach (InhouseData compressedFile in compressedData)
@@ -63,6 +65,20 @@ public class Program
             {
                 List<CanonicalModel> sortedByCategory = sortingBySize.SmartSorter(categories[category]);
                 sortedValues[category] = sortedByCategory;
+            }
+
+            //after each category is sorted, we sort within each size, so the highest sales is at the top
+            foreach (var item in sortedValues.Keys)
+            {
+                foreach(var listItem in sortedValues[item])
+                {
+                    //we set the sortingIndex to be -quantsold, as the sorting goes low to high. Where we want this output to be high to low.
+                    listItem.SortingIndex = -listItem.QuantitySold;
+                }
+                List<CanonicalModel> sortedBySalesInCategory = sortedValues[item];
+                //the method should be private, but this way i can go to it directly
+                sortingBySize.InsersionSortByIndex(ref sortedBySalesInCategory);
+                sortedValues[item] = sortedBySalesInCategory;
             }
         }
 

@@ -456,7 +456,7 @@ namespace DataHandling
         /// The Actual sorting algorithm
         /// </summary>
         /// <param name="sortList"></param>
-        private static void InsersionSortByIndex(ref List<CanonicalModel> sortList)
+        public static void InsersionSortByIndex(ref List<CanonicalModel> sortList)
         {
             bool sorted = false;
             while (!sorted)
