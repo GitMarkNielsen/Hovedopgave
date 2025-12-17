@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WritingOutput;
 
 namespace LoadingFiles
 {
@@ -24,6 +25,12 @@ namespace LoadingFiles
             CanonicalModel CM = new();
                 for (int j = 0; j < data.HeaderValues.Count; j++)
                 {
+                    if (data.HeaderValues.Count != data.AllRows[i].Columns.Count)
+                    {
+                        ConsoleWriter.Write("File ;" + data.FileName + "; has more data rows than header rows.",';',ConsoleColor.Yellow);
+                        ConsoleWriter.Write(";Skipping File!;", ';', ConsoleColor.Red);
+                        return null;
+                    }
                     switch (data.HeaderValues[j].ToUpper())
                     {
                         case "EAN":
@@ -45,7 +52,8 @@ namespace LoadingFiles
                             CM.ItemgroupName = data.AllRows[i].Columns[j];
                             break;
                         default:
-                            CM.Unknown = data.AllRows[i].Columns[j];
+                            Console.WriteLine("Something unknown found in file. Proceeding anyway");
+                            CM.Unknown.Add(data.AllRows[i].Columns[j]);
                             break;
                     }
                 }

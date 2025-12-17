@@ -2,6 +2,7 @@
 using DataHandling;
 using LoadingFiles;
 using System.Net.Http.Headers;
+using System.Net.Security;
 using Tests;
 using WritingOutput;
 
@@ -19,7 +20,8 @@ public class Program
         GenerateInputFiles testmaker = new();
         testmaker.MakeData(FolderToSearch);
 
-        Console.WriteLine($"Searching folder: {FolderToSearch}");
+        ConsoleWriter.Write($"Searching folder: ;{FolderToSearch};", ';',ConsoleColor.DarkYellow);
+       
 
         //______________________________
         //1. Loading Files
@@ -36,6 +38,17 @@ public class Program
             {
                 parsedData.Add(parser.ParseValues(LoadedFile));
             }
+
+            //cleaning files if there was an error before
+            List<InhouseData> nullClean = new();
+            foreach (InhouseData inhouseData in parsedData)
+            {
+                if(inhouseData != null)
+                {
+                    nullClean.Add(inhouseData);
+                }
+            }
+            parsedData = nullClean;
         }
 
 

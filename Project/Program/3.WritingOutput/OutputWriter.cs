@@ -13,7 +13,7 @@ namespace WritingOutput
     {
         public static void ToJSON(OutputFormatter stuffToSerialize)
         {
-            string docPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/GoFactLight/Output/OutputJSON.json";
+            string docPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/GoFactLight/Output/OutputJSON_" + DateTime.Now.ToString("yyyyMMdd_HH_mm_ss_ffff") + ".json";
 
 
             string objToJSON = JsonSerializer.Serialize(stuffToSerialize, new JsonSerializerOptions { WriteIndented = true });
@@ -23,8 +23,8 @@ namespace WritingOutput
         public static void ToCSV(OutputFormatter outputFormatter, char delimeter = ';')
         {
             //get output file location
-            string docPathSum = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/GoFactLight/Output/OutputSummery" + DateTime.Now.ToString("yyyyMMdd_HH_mm_ss_ffff") + ".csv";
-            string docPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/GoFactLight/Output/OutputCSV"+ DateTime.Now.ToString("yyyyMMdd_HH_mm_ss_ffff") + ".csv";
+            string docPathSum = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/GoFactLight/Output/OutputCSVSummery_" + DateTime.Now.ToString("yyyyMMdd_HH_mm_ss_ffff") + ".csv";
+            string docPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/GoFactLight/Output/OutputCSV_"+ DateTime.Now.ToString("yyyyMMdd_HH_mm_ss_ffff") + ".csv";
 
             //summary
             string headersForSummary = $"SummaryName{delimeter}GrossProfit{delimeter}TotalSales\r\n";

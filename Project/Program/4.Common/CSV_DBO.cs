@@ -5,6 +5,7 @@ public class CSV_DBO
 {
     public List<string> HeaderValues { get; set; } = new List<string>();
     public List<Rows> AllRows { get; set; } = new List<Rows>();
+    public string FileName { get; set; }
 
     /// <summary>
     /// Debug the CSV_DBO. 

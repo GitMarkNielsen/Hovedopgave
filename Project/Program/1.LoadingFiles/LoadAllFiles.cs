@@ -2,6 +2,7 @@
 using System.IO;
 using System.Collections;
 using System.Text.RegularExpressions;
+using WritingOutput;
 public class LoadAllFiiles
 {
 
@@ -13,7 +14,7 @@ public class LoadAllFiiles
         AllFilePaths = Directory.GetFiles(FolderToSearch);
         foreach (string file in AllFilePaths)
         {
-            Console.WriteLine("Reading from file: " + file);
+            ConsoleWriter.Write("Reading from file: ;" + file + ";", ';', ConsoleColor.Yellow);
             using (var reader = new StreamReader(file))
             {
                 //if the file has no data
@@ -24,6 +25,8 @@ public class LoadAllFiiles
                 }
 
                 CSV_DBO CSVData = new();
+
+                CSVData.FileName = file;
                 //Header from CSV
                 string line = reader.ReadLine();
 
