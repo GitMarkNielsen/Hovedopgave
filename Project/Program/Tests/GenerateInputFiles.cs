@@ -13,7 +13,7 @@ namespace Tests
     {
         //Setup
         //↓ length of file
-        int finalLineCount = 2500;
+        int finalLineCount = 1000;
 
         //↓Fine tune possible data
         List<CategoryDBO> categoryOptions = new()

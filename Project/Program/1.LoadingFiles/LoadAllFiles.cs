@@ -47,9 +47,6 @@ public class LoadAllFiiles
                 //from here, the CSVData variable should contain all the data from the CSV.
                 AllDataFilesLoaded.Add(CSVData);
             }
-            //send each file down the pipeline
-            return AllDataFilesLoaded;
-
         }
         return AllDataFilesLoaded;
     }
