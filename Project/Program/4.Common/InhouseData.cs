@@ -12,6 +12,7 @@ namespace Common
     /// </summary>
     public class InhouseData
     {
+        public string FileName { get; set; }
         public List<CanonicalModel> Row{ get; set; } = new List<CanonicalModel>();
     }
 }

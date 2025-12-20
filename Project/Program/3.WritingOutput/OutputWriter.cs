@@ -5,27 +5,32 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace WritingOutput
 {
     internal class OutputWriter
     {
-        public static void ToJSON(OutputFormatter stuffToSerialize)
+        public static void ToJSON(OutputFormatter stuffToSerialize, string fileName)
         {
-            string docPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/GoFactLight/Output/OutputJSON_" + DateTime.Now.ToString("yyyyMMdd_HH_mm_ss_ffff") + ".json";
+            fileName = CleanupFileName(fileName);
+            string docPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Output", fileName + "SummaryForIT.json");
 
 
             string objToJSON = JsonSerializer.Serialize(stuffToSerialize, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(docPath, objToJSON);
         }
 
-        public static void ToCSV(OutputFormatter outputFormatter, char delimeter = ';')
+        public static void ToCSV(OutputFormatter outputFormatter, string fileName, char delimeter = ';')
         {
+            fileName = CleanupFileName(fileName);
             //get output file location
-            string docPathSum = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/GoFactLight/Output/OutputCSVSummery_" + DateTime.Now.ToString("yyyyMMdd_HH_mm_ss_ffff") + ".csv";
-            string docPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/GoFactLight/Output/OutputCSV_"+ DateTime.Now.ToString("yyyyMMdd_HH_mm_ss_ffff") + ".csv";
-
+            string CurrentFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"Output");
+            string docPathSum = Path.Combine(CurrentFolder, fileName + "ShortSummary.csv");
+            
+           
+            string docPath = Path.Combine(CurrentFolder, fileName + "Summary.csv"); ;
             //summary
             string headersForSummary = $"SummaryName{delimeter}GrossProfit{delimeter}TotalSales\r\n";
             File.WriteAllText(docPathSum, headersForSummary);
@@ -59,6 +64,12 @@ namespace WritingOutput
             }
         }
 
-
+        private static string CleanupFileName(string fileName)
+        {
+            string[] splitString = fileName.Split('\\');
+            string outString = splitString[splitString.Length - 1];
+            
+            return outString.Split('.')[0];
+        }
     }
 }

@@ -59,7 +59,7 @@ namespace DataHandling
                 //adding the result to a static dbo so we dont need to carry it through the code.
                 SummariesStaticList.Summaries.Add(sum);
             }
-
+            combinedData.FileName = FullParsedCSV.FileName;
             return combinedData;
          
         }

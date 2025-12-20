@@ -20,6 +20,7 @@ namespace LoadingFiles
         {
             //CanonicalModel is the data from a CSV file in the correct data types
             InhouseData ParsedCSV = new();
+            ParsedCSV.FileName = data.FileName;
             for (int i = 0; i < data.AllRows.Count; i++)
             {
             CanonicalModel CM = new();

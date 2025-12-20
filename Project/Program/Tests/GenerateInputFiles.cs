@@ -34,12 +34,21 @@ namespace Tests
 
         public void MakeData(string folderPath)
         {
+            CheckIffoldersExist(folderPath);
+            folderPath = Path.Combine(folderPath, "input");
             MakeFictionalProducts();
             GenerateCSV(folderPath);
             //generate a CSV with same delimiter as the decimal separator
             GenerateInvalidCSV(folderPath, ',');
         }
-
+        private void CheckIffoldersExist(string folderPath)
+        {
+            if (!Directory.Exists(Path.Combine(folderPath, "Input")) | !Directory.Exists(Path.Combine(folderPath, "Output")))
+            {
+                Directory.CreateDirectory(Path.Combine(folderPath,"Input"));
+                Directory.CreateDirectory(Path.Combine(folderPath, "Output"));
+            }
+        }
         private void MakeFictionalProducts()
         {
             // modify ↓ to change total amount of items

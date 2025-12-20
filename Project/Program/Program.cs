@@ -10,24 +10,23 @@ using WritingOutput;
 
 public class Program
 {
-    public static string FolderToSearch { get; set; } = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/GoFactLight/Input";
-
+    public static string FolderToSearch { get; set; } = AppDomain.CurrentDomain.BaseDirectory;
     public static void Main(string[] args)
     {
         //-------------------------
         //0.Setup synth data
         //-------------------------
         GenerateInputFiles testmaker = new();
-        testmaker.MakeData(FolderToSearch);
+        testmaker.MakeData(Path.Combine(FolderToSearch));
 
-        ConsoleWriter.Write($"Searching folder: ;{FolderToSearch};", ';',ConsoleColor.DarkYellow);
-       
+        ConsoleWriter.Write($"Searching folder: ;{FolderToSearch + @"\Input"};", ';',ConsoleColor.DarkYellow);
+        
 
         //______________________________
         //1. Loading Files
         //______________________________
         LoadAllFiiles loadAllFiles = new();
-        List<CSV_DBO> AllFiles = loadAllFiles.LoadCSVFiles(FolderToSearch);
+        List<CSV_DBO> AllFiles = loadAllFiles.LoadCSVFiles(Path.Combine(FolderToSearch,"Input"));
 
         List<InhouseData> parsedData = new();
         //using statement, so it will get cleaned up as soon as the parser isn't needed anymore.
@@ -151,10 +150,15 @@ public class Program
             OutputFormatter outputFormatter = new OutputFormatter();
             outputFormatter.FullDetails = sortedValues;
 
-            OutputWriter.ToJSON(outputFormatter);
-            OutputWriter.ToCSV(outputFormatter);
+            OutputWriter.ToJSON(outputFormatter, compressedFile.FileName);
+            OutputWriter.ToCSV(outputFormatter, compressedFile.FileName);
 
         }
+
+        ConsoleWriter.Write(";Program Done! You can now close this window;", ';',ConsoleColor.Green);
+        Console.Read();
+        Thread.Sleep(6000);
+
         //End Of Main
     }
 }
