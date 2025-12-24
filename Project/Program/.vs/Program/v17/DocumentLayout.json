@@ -3,6 +3,30 @@
   "WorkspaceRootPath": "C:\\Projects\\Hovedopgave\\Hovedopgave\\Project\\Program\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|c:\\projects\\hovedopgave\\hovedopgave\\project\\program\\0.common\\canonicalmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|solutionrelative:0.common\\canonicalmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|c:\\projects\\hovedopgave\\hovedopgave\\project\\program\\0.common\\inhousedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|solutionrelative:0.common\\inhousedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|c:\\projects\\hovedopgave\\hovedopgave\\project\\program\\0.common\\rows.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|solutionrelative:0.common\\rows.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|c:\\projects\\hovedopgave\\hovedopgave\\project\\program\\0.common\\csv_dbo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|solutionrelative:0.common\\csv_dbo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|c:\\projects\\hovedopgave\\hovedopgave\\project\\program\\0.common\\columns.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|solutionrelative:0.common\\columns.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|c:\\projects\\hovedopgave\\hovedopgave\\project\\program\\2.datahandling\\combineitems.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|solutionrelative:2.datahandling\\combineitems.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|c:\\projects\\hovedopgave\\hovedopgave\\project\\program\\3.writingoutput\\consolewriter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|solutionrelative:3.writingoutput\\consolewriter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -23,16 +47,8 @@
       "RelativeMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|solutionrelative:tests\\generateinputfiles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|c:\\projects\\hovedopgave\\hovedopgave\\project\\program\\2.datahandling\\combineitems.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|solutionrelative:2.datahandling\\combineitems.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|c:\\projects\\hovedopgave\\hovedopgave\\project\\program\\1.loadingfiles\\parsestringstovalues.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|solutionrelative:1.loadingfiles\\parsestringstovalues.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|c:\\projects\\hovedopgave\\hovedopgave\\project\\program\\0.common\\inhousedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|solutionrelative:0.common\\inhousedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|c:\\projects\\hovedopgave\\hovedopgave\\project\\program\\1.loadingfiles\\loadallfiles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -43,28 +59,12 @@
       "RelativeMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|solutionrelative:2.datahandling\\sortingbysize.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|c:\\projects\\hovedopgave\\hovedopgave\\project\\program\\0.common\\csv_dbo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|solutionrelative:0.common\\csv_dbo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|c:\\projects\\hovedopgave\\hovedopgave\\project\\program\\0.common\\summariesstaticlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|solutionrelative:0.common\\summariesstaticlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|c:\\projects\\hovedopgave\\hovedopgave\\project\\program\\0.common\\canonicalmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|solutionrelative:0.common\\canonicalmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|c:\\projects\\hovedopgave\\hovedopgave\\project\\program\\0.common\\rows.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|solutionrelative:0.common\\rows.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|c:\\projects\\hovedopgave\\hovedopgave\\project\\program\\0.common\\summary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|solutionrelative:0.common\\summary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|c:\\projects\\hovedopgave\\hovedopgave\\project\\program\\0.common\\columns.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|solutionrelative:0.common\\columns.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{85B74196-4B65-440E-9E40-65F8C6F074A2}|Program.csproj|c:\\projects\\hovedopgave\\hovedopgave\\project\\program\\tests\\categorydbo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -85,11 +85,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 9,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Projects\\Hovedopgave\\Hovedopgave\\Project\\Program\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -102,7 +102,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 12,
               "Title": "LoadAllFiles.cs",
               "DocumentMoniker": "C:\\Projects\\Hovedopgave\\Hovedopgave\\Project\\Program\\1.LoadingFiles\\LoadAllFiles.cs",
               "RelativeDocumentMoniker": "1.LoadingFiles\\LoadAllFiles.cs",
@@ -115,7 +115,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 11,
               "Title": "ParseStringsToValues.cs",
               "DocumentMoniker": "C:\\Projects\\Hovedopgave\\Hovedopgave\\Project\\Program\\1.LoadingFiles\\ParseStringsToValues.cs",
               "RelativeDocumentMoniker": "1.LoadingFiles\\ParseStringsToValues.cs",
@@ -128,33 +128,35 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 3,
               "Title": "CSV_DBO.cs",
               "DocumentMoniker": "C:\\Projects\\Hovedopgave\\Hovedopgave\\Project\\Program\\0.Common\\CSV_DBO.cs",
               "RelativeDocumentMoniker": "0.Common\\CSV_DBO.cs",
               "ToolTip": "C:\\Projects\\Hovedopgave\\Hovedopgave\\Project\\Program\\0.Common\\CSV_DBO.cs",
               "RelativeToolTip": "0.Common\\CSV_DBO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-27T11:53:57.306Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 2,
               "Title": "Rows.cs",
               "DocumentMoniker": "C:\\Projects\\Hovedopgave\\Hovedopgave\\Project\\Program\\0.Common\\Rows.cs",
               "RelativeDocumentMoniker": "0.Common\\Rows.cs",
               "ToolTip": "C:\\Projects\\Hovedopgave\\Hovedopgave\\Project\\Program\\0.Common\\Rows.cs",
               "RelativeToolTip": "0.Common\\Rows.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-27T11:59:25.194Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 4,
               "Title": "Columns.cs",
               "DocumentMoniker": "C:\\Projects\\Hovedopgave\\Hovedopgave\\Project\\Program\\0.Common\\Columns.cs",
               "RelativeDocumentMoniker": "0.Common\\Columns.cs",
@@ -163,11 +165,12 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-27T11:59:39.615Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 0,
               "Title": "CanonicalModel.cs",
               "DocumentMoniker": "C:\\Projects\\Hovedopgave\\Hovedopgave\\Project\\Program\\0.Common\\CanonicalModel.cs",
               "RelativeDocumentMoniker": "0.Common\\CanonicalModel.cs",
@@ -176,11 +179,12 @@
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABUAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-27T12:37:09.118Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
               "Title": "OutputWriter.cs",
               "DocumentMoniker": "C:\\Projects\\Hovedopgave\\Hovedopgave\\Project\\Program\\3.WritingOutput\\OutputWriter.cs",
               "RelativeDocumentMoniker": "3.WritingOutput\\OutputWriter.cs",
@@ -189,8 +193,7 @@
               "ViewState": "AgIAAAQAAAAAAAAAAAApwBEAAABzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-26T10:08:46.797Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -202,13 +205,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 6,
               "Title": "ConsoleWriter.cs",
               "DocumentMoniker": "C:\\Projects\\Hovedopgave\\Hovedopgave\\Project\\Program\\3.WritingOutput\\ConsoleWriter.cs",
               "RelativeDocumentMoniker": "3.WritingOutput\\ConsoleWriter.cs",
               "ToolTip": "C:\\Projects\\Hovedopgave\\Hovedopgave\\Project\\Program\\3.WritingOutput\\ConsoleWriter.cs",
               "RelativeToolTip": "3.WritingOutput\\ConsoleWriter.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAA+wAgAAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAqwAgAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-17T15:28:45.068Z",
               "EditorCaption": ""
@@ -221,13 +224,14 @@
               "RelativeDocumentMoniker": "2.DataHandling\\CombineItems.cs",
               "ToolTip": "C:\\Projects\\Hovedopgave\\Hovedopgave\\Project\\Program\\2.DataHandling\\CombineItems.cs",
               "RelativeToolTip": "2.DataHandling\\CombineItems.cs",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAgwD0AAAAyAAAAAAAAAA==",
+              "ViewState": "AgIAACEAAAAAAAAAAAAgwD0AAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-05T16:33:58.096Z"
+              "WhenOpened": "2025-11-05T16:33:58.096Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 1,
               "Title": "InhouseData.cs",
               "DocumentMoniker": "C:\\Projects\\Hovedopgave\\Hovedopgave\\Project\\Program\\0.Common\\InhouseData.cs",
               "RelativeDocumentMoniker": "0.Common\\InhouseData.cs",
@@ -235,11 +239,12 @@
               "RelativeToolTip": "0.Common\\InhouseData.cs",
               "ViewState": "AgIAAAEAAAAAAAAAAAAAAA4AAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-27T12:50:10.901Z"
+              "WhenOpened": "2025-10-27T12:50:10.901Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 8,
               "Title": "OutputFormatter.cs",
               "DocumentMoniker": "C:\\Projects\\Hovedopgave\\Hovedopgave\\Project\\Program\\0.Common\\OutputFormatter.cs",
               "RelativeDocumentMoniker": "0.Common\\OutputFormatter.cs",
@@ -247,12 +252,11 @@
               "RelativeToolTip": "0.Common\\OutputFormatter.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-11T11:28:11.83Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-11T11:28:11.83Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 10,
               "Title": "GenerateInputFiles.cs",
               "DocumentMoniker": "C:\\Projects\\Hovedopgave\\Hovedopgave\\Project\\Program\\Tests\\GenerateInputFiles.cs",
               "RelativeDocumentMoniker": "Tests\\GenerateInputFiles.cs",
@@ -264,7 +268,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 14,
               "Title": "SummariesStaticList.cs",
               "DocumentMoniker": "C:\\Projects\\Hovedopgave\\Hovedopgave\\Project\\Program\\0.Common\\SummariesStaticList.cs",
               "RelativeDocumentMoniker": "0.Common\\SummariesStaticList.cs",
@@ -276,7 +280,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 13,
               "Title": "sortingBySize.cs",
               "DocumentMoniker": "C:\\Projects\\Hovedopgave\\Hovedopgave\\Project\\Program\\2.DataHandling\\sortingBySize.cs",
               "RelativeDocumentMoniker": "2.DataHandling\\sortingBySize.cs",
@@ -288,7 +292,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "Summary.cs",
               "DocumentMoniker": "C:\\Projects\\Hovedopgave\\Hovedopgave\\Project\\Program\\0.Common\\Summary.cs",
               "RelativeDocumentMoniker": "0.Common\\Summary.cs",
