@@ -365,14 +365,6 @@ namespace DataHandling
                     {
                         double firstNumber = double.Parse(regMatch.Groups[3].Value);
                         double secondNumber = double.Parse(regMatch.Groups[10].Value);
-                        var WordsInItem = Regex.Matches(regMatch.Groups[0].Value, RegexDBO.Words);
-                        if (WordsInItem.Count > 1)
-                        {
-                            if (Regex.IsMatch(WordsInItem[1].Groups[0].Value, "y", RegexOptions.IgnoreCase))
-                            {
-                                secondNumber *= 10;
-                            }
-                        }
                         if (Regex.IsMatch(regMatch.Groups[9].Value, @"\,|\.")) //if it's a decimal
                         {
                             CM.SortingIndex = double.Parse(regMatch.Groups[3].Value + "." + regMatch.Groups[10].Value) * sortByFirst;
@@ -420,7 +412,6 @@ namespace DataHandling
                         else
                             throw new Exception("Error with 3 numbers: couldn't find endpoint");
                     }
-
                     //---------------------------------------------------
                     // 4 numbers
                     else if (!string.IsNullOrEmpty(regMatch.Groups[5].Value)) //if group 5 is set, then there's 4 numbers
